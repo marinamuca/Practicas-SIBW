@@ -37,6 +37,7 @@ header{
     height: auto;
     position: sticky;
     top:0;
+    z-index: 2;
     /* min-height: 15%; */
     /* max-height: 15%; */
     margin: 0px;
@@ -73,12 +74,11 @@ header{
     
     .title{
         display: flex;
-        justify-content: center;
+        justify-content: left;
         align-items: center;
         width: auto;
         /* Altura del logo + el margen */
         padding-left: 20px;
-        justify-content: left;
     }
 
     .title span{
@@ -137,7 +137,7 @@ header{
     }
 /* END HEADER AND ITS CONTENT */
 
-
+/* MAIN CONTENT AND SIDEBAR */
 .cont-sidebar-main{
     display: flex;
     max-width: 100%;
@@ -158,17 +158,81 @@ header{
     min-height: 100%;
     overflow: auto;
 }
+    /* Sidebar */
+    aside.sidebar{
+        margin-left: 10px;
+        margin-top: 10px;
+        float: right;
+        width: 20%;
+        max-width: 20%;
+        max-height: calc(100vh - 150px);
+        min-height: calc(100vh - 150px); 
+        position: fixed;
+        right: 0;
+        z-index: 0;
+        background-color: var(--lighter-pink);
 
-aside.sidebar{
-    margin-top: 10px;
-    margin-left: 10px;
-    float: right;
-    width: 20%;
-    max-width: 20%;
-    max-height: 100%;
-    min-height: 100%;  
-    background-color: var(--lighter-pink);
-}
+    }
+
+    .sidebar-content ul{
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .sidebar-content a{
+        display: block;
+        padding: 15px 16px;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .sidebar-content li a:hover{
+        background-color: var(--light-pink);
+    }
+
+    h3{
+        font-weight: normal;
+        width: 100%;
+        display: block;
+        text-align: center;
+        border-bottom: 5px solid white;
+        margin: 0;
+        padding: 18px 0;
+    }
+
+    .rrss{
+        width: 100%;
+        /* padding: 8px 16px; */
+        display: flex;
+        align-content: center;
+    }
+
+    .rrss img{
+        max-width: 25px;
+    }
+
+    .rrss a{
+        text-decoration: none;
+        display: flex;
+        align-content: center;
+    }
+
+    .rrss a span{
+        padding-left: 5px;
+        display: flex;
+        align-self: center;
+        font-size: 15px;
+    }
+    
+    .rrss-title{
+        display: flex;
+        justify-content: left;
+        align-content: center;
+    }
+    
+
+/* END MAIN CONT AND SIDEBAR */
+
 
 footer{
     width: 100%;
@@ -176,8 +240,11 @@ footer{
     margin-top: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;   
     background-color: var(--light-pink);
+    position: relative;
+    z-index: 1;
+    border-top: 10px solid white;
 }
 
 @media only screen and (max-width: 800px) {
