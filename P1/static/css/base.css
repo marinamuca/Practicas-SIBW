@@ -9,9 +9,17 @@
     --main-pink: #e7788b;
 }
 
+@font-face {
+    font-family: 'brandon-grot-w01-light';
+    src: url('../font/brandon_grot_w01_light-webfont.woff2') format('woff2'),
+         url('../font/brandon_grot_w01_light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     box-sizing: border-box;
-    font-family: "Open Sans", Oswald, sans-serif;
+    font-family: brandon-grot-w01-light, Oswald, sans-serif;
     color: var(--main-pink);
 } 
 
@@ -160,13 +168,13 @@ header{
 }
     /* Sidebar */
     aside.sidebar{
-        margin-left: 10px;
+        margin: 0 10px;
         margin-top: 10px;
         float: right;
-        width: 20%;
+        width: calc(20% - 20px); /* 20% incluye a los margenes  */
         max-width: 20%;
-        max-height: calc(100vh - 150px);
-        min-height: calc(100vh - 150px); 
+        max-height: calc(100vh - 170px); /* Altura - altura del header */
+        min-height: calc(100vh - 170px); 
         position: fixed;
         right: 0;
         z-index: 0;
@@ -191,7 +199,7 @@ header{
     }
 
     h3{
-        font-weight: normal;
+        font-weight: bold;
         width: 100%;
         display: block;
         text-align: center;
@@ -199,6 +207,8 @@ header{
         margin: 0;
         padding: 18px 0;
     }
+
+    /* Links a las redes sociales */
 
     .rrss{
         width: 100%;
