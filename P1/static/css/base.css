@@ -1,12 +1,15 @@
 @import url("portada.css");
 @import url("producto.css");
-@import url("producto_imprimir.css");
 
 /* Toda la pagina */
 :root{
     --lighter-pink: #faebf3;
     --light-pink: #f6d7e7;
     --main-pink: #e7788b;
+    --dark-pink: #a75966;
+    --shadow: #8a305b56;
+    --dark-shadow: #8d435185;
+
 }
 
 @font-face {
@@ -38,6 +41,15 @@ body{
     overflow: hidden;
 } 
 
+h1{
+    font-size: xx-large;
+    display: block;
+}
+
+h2{
+    font-size: 20px;
+    display: block;
+}
 
 /* HEADER AND ITS CONTENT */
 header{
@@ -46,8 +58,6 @@ header{
     position: sticky;
     top:0;
     z-index: 2;
-    /* min-height: 15%; */
-    /* max-height: 15%; */
     margin: 0px;
 }
     /* LOGO Y TITULO */
@@ -128,7 +138,6 @@ header{
     .navbar li{
         float: left;
         margin: 0px;
-        background-color: var(--light-pink);
     }
 
     .navbar li a{
@@ -157,20 +166,18 @@ header{
 
 .main-container{
     padding-top: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     display: flex;
     float: left;
-    min-width: 80%;
     max-width: 80%;
     max-height: 100%;
     min-height: 100%;
     overflow: auto;
 }
-    /* Sidebar */
+    /* Sidebar and its content */
     aside.sidebar{
         margin: 0 10px;
         margin-top: 10px;
-        float: right;
         width: calc(20% - 20px); /* 20% incluye a los margenes  */
         max-width: 20%;
         max-height: calc(100vh - 170px); /* Altura - altura del header */
@@ -178,6 +185,7 @@ header{
         position: fixed;
         right: 0;
         z-index: 0;
+        overflow: scroll; /* Para que si se hace mas pequeña la ventana por abajo, se puedan ver todas las redes */
         background-color: var(--lighter-pink);
 
     }
@@ -208,14 +216,7 @@ header{
         padding: 18px 0;
     }
 
-    /* Links a las redes sociales */
-
-    .rrss{
-        width: 100%;
-        /* padding: 8px 16px; */
-        display: flex;
-        align-content: center;
-    }
+    /* Links a las redes sociales en sidebar */
 
     .rrss img{
         max-width: 25px;
@@ -234,11 +235,11 @@ header{
         font-size: 15px;
     }
     
-    .rrss-title{
+    /* .rrss-title{
         display: flex;
         justify-content: left;
         align-content: center;
-    }
+    } */
     
 
 /* END MAIN CONT AND SIDEBAR */
@@ -247,31 +248,53 @@ header{
 footer{
     width: 100%;
     height: 55px;
-    margin-top: 10px;
+    margin:0;
     display: flex;
     align-items: center;
     justify-content: center;   
     background-color: var(--light-pink);
     position: relative;
+    bottom: 0;
     z-index: 1;
     border-top: 10px solid white;
 }
 
-@media only screen and (max-width: 800px) {
-    
-}
-    
-
 /* Responsive */
+
+/* Filas de 2 */
+@media only screen and (max-width: 700px) {
+    .rrss a{
+        display: flex;
+        justify-content: center;
+    }
+
+    .rrss a img{
+        min-width: 50%;
+        display: block;
+        align-self: center;
+    }
+
+    .rrss a span{
+        display: none;
+    }
+}
+
+
+/* Filas de 1 */
 @media only screen and (max-width: 500px) {
+    /* Oculto la Sidebar */
     .main-container{
         min-width: 100%;
+        max-width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
     aside.sidebar{
-        min-width: 0%;
+        display: none;
     }
 
+    /* Hago mas pequeños los elementos del header*/
     .title{
         padding-left: 10px;
     }
@@ -291,10 +314,7 @@ footer{
         font-size: 15px;
     }
 
-    .main-container{
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
+    /* Hago mas pequeños los elementos del footer */
 
     footer{
         margin-top: 5px;

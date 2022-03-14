@@ -1,0 +1,33 @@
+p.descripcion-producto, h1, h2, h3{
+    color: black;
+    font-family: Oswald, Arial, Helvetica, sans-serif;
+}
+
+.navbar ul{
+    display: none;
+}
+
+aside.sidebar{
+    display: none;
+}
+
+.main-container{
+    max-width: 100%;
+}
+
+footer{
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+}
+
+.cont-logo-title{
+    margin-top: 20px;
+    margin-left: 40px;
+    /* display: block; */
+}
+
+.title{
+    width: 100%;
+}

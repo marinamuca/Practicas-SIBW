@@ -10,15 +10,15 @@
 .product-img{
     width: 100%;
     height: min-content;
-    border: 2px solid #f6d7e7;
-    box-shadow: 0 8px 8px 0 #8a305b56;
+    border: 2px solid var(--light-pink);
+    box-shadow: 0 8px 8px 0 var(--shadow);
     border-radius: 10px;
     overflow: hidden;
 }
 
 .product-img:hover{
-    border: 2px solid #e7788b;
-    box-shadow: 0 8px 8px 0 #8d435185;
+    border: 2px solid var(--main-pink);
+    box-shadow: 0 8px 8px 0 var(--dark-shadow);
 }
 
 .product-img img{
