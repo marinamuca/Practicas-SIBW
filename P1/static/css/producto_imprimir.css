@@ -12,7 +12,7 @@ aside.sidebar{
 }
 
 .main-container{
-    max-width: 100%;
+    width: 100%;
 }
 
 footer{
@@ -25,9 +25,24 @@ footer{
 .cont-logo-title{
     margin-top: 20px;
     margin-left: 40px;
-    /* display: block; */
+    padding: 0;
 }
 
 .title{
     width: 100%;
+}
+
+.product-images{
+    display: none;
+}
+
+.product-text{
+    width: 100%;
+    margin-right: 50px;
+}
+
+@media only screen and (max-width: 950px){
+    footer{
+        position: relative;
+    }
 }

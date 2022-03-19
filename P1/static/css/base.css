@@ -1,15 +1,17 @@
 @import url("portada.css");
 @import url("producto.css");
 
-/* Toda la pagina */
+/* Estilos de los elementos comunes a todas las paginas */
+
 :root{
     --lighter-pink: #faebf3;
     --light-pink: #f6d7e7;
+    --light-pink-shadow: #f6d7e7a2;
     --main-pink: #e7788b;
     --dark-pink: #a75966;
+    --darker-pink: #612c46;
     --shadow: #8a305b56;
-    --dark-shadow: #8d435185;
-
+    --dark-shadow: #7c3e5ba1;
 }
 
 @font-face {
@@ -38,7 +40,6 @@ body{
     width: 100vw;
     max-width: 100vw;
     margin: 0px; 
-    overflow: hidden;
 } 
 
 h1{
@@ -51,31 +52,40 @@ h2{
     display: block;
 }
 
+h3{
+    font-weight: bold;
+    width: 100%;
+    display: block;
+    text-align: center;
+    border-bottom: 5px solid white;
+    margin: 0;
+    padding: 18px 0;
+}
+
+ul{   
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
 /* HEADER AND ITS CONTENT */
 header{
     width: 100%;
     height: auto;
     position: sticky;
     top:0;
-    z-index: 2;
+    z-index: 2; /* Capa mas externa */
     margin: 0px;
 }
     /* LOGO Y TITULO */
     .cont-logo-title{
-        min-width: 100%;
-        max-width: 100%;
-        min-height: 50%;
-        max-height: 50%;
+        width: 100%;
+        height: 50%;
         display: flex;
         justify-content: center; 
         align-items: center;
-        /* padding: 10px; */
+        padding: 10px;
         background-color: white;
-    }
-
-    .cont-logo{
-        width: auto;
-        height: 100%;
     }
 
     .logo{
@@ -83,19 +93,20 @@ header{
         /* Tamaño del círculo */
         height: 80px;
         width: 80px;
+        min-width: 80px;
         margin: 10px;
-        background-image: url(../image/logo.jpg);
         background-position: 50%;
-        border-radius: 50%;
+        border-radius: 50%; /* redondear el div para que la imagen quede en circulo*/
         background-size: 100% auto;
+        overflow: hidden; /* Para la imagen no se salga por fuera del div */
+    }
+
+    .logo img{
+        width: 100%; /* Limito la anchura a la anchura del contenedor padre */
     }
     
     .title{
-        display: flex;
-        justify-content: left;
-        align-items: center;
         width: auto;
-        /* Altura del logo + el margen */
         padding-left: 20px;
     }
 
@@ -104,40 +115,26 @@ header{
         font-weight: lighter;
         font-size: 50px;
         color: var(--main-pink);
-
     }
 
     /* NAVBAR */
     nav.navbar{
-        display: flex;
-        min-width: 100%;
+        width: 100%;
         max-width: 100%;
-        min-height: 50%;
+        height: 50%;
         max-height: 50%;
     }
-
-    ul{   
-        margin: 0px;
-        padding: 0px;
-        list-style-type: none;
-    }
-
 
     .navbar ul{
         display: flex;
         justify-content: center;
         align-items: center;
-        min-width: 100%;
+        width: 100%;
         max-width: 100%;
-        min-height: 100%;
+        height: 100%;
         max-height: 100%;
         overflow: hidden;
         background-color: var(--light-pink);
-    }
-
-    .navbar li{
-        float: left;
-        margin: 0px;
     }
 
     .navbar li a{
@@ -160,8 +157,6 @@ header{
     max-width: 100%;
     min-width: 100%;
     height: auto;
-    /* max-height: 74%;    
-    min-height: 74%;     */
 }
 
 .main-container{
@@ -169,19 +164,19 @@ header{
     padding-bottom: 10px;
     display: flex;
     float: left;
-    max-width: 80%;
+    width: 80%;
+    height: 100%;
     max-height: 100%;
-    min-height: 100%;
     overflow: auto;
+    flex-wrap: wrap; /* Para que se pongan las fotos de los productos unas debajo de otras */
 }
     /* Sidebar and its content */
     aside.sidebar{
         margin: 0 10px;
         margin-top: 10px;
-        width: calc(20% - 20px); /* 20% incluye a los margenes  */
+        width: calc(20% - 20px); /* 20% incluye a los margenes por lo que se los resto */
         max-width: 20%;
-        max-height: calc(100vh - 170px); /* Altura - altura del header */
-        min-height: calc(100vh - 170px); 
+        height: calc(100vh - 170px); /* Altura = total de la ventana - altura del header */
         position: fixed;
         right: 0;
         z-index: 0;
@@ -190,15 +185,11 @@ header{
 
     }
 
-    .sidebar-content ul{
-        min-width: 100%;
-        max-width: 100%;
-    }
 
     .sidebar-content a{
         display: block;
         padding: 15px 16px;
-        min-width: 100%;
+        width: 100%;
         max-width: 100%;
     }
 
@@ -206,18 +197,7 @@ header{
         background-color: var(--light-pink);
     }
 
-    h3{
-        font-weight: bold;
-        width: 100%;
-        display: block;
-        text-align: center;
-        border-bottom: 5px solid white;
-        margin: 0;
-        padding: 18px 0;
-    }
-
     /* Links a las redes sociales en sidebar */
-
     .rrss img{
         max-width: 25px;
     }
@@ -230,20 +210,11 @@ header{
 
     .rrss a span{
         padding-left: 5px;
-        display: flex;
         align-self: center;
         font-size: 15px;
     }
-    
-    /* .rrss-title{
-        display: flex;
-        justify-content: left;
-        align-content: center;
-    } */
-    
 
 /* END MAIN CONT AND SIDEBAR */
-
 
 footer{
     width: 100%;
@@ -259,7 +230,7 @@ footer{
     border-top: 10px solid white;
 }
 
-/* Responsive */
+/* RESPONSIVE LAYOUT */
 
 /* Filas de 2 */
 @media only screen and (max-width: 700px) {
@@ -282,14 +253,14 @@ footer{
 
 /* Filas de 1 */
 @media only screen and (max-width: 500px) {
-    /* Oculto la Sidebar */
     .main-container{
         min-width: 100%;
         max-width: 100%;
         padding-top: 10px;
         padding-bottom: 10px;
     }
-
+    
+    /* Oculto la Sidebar */
     aside.sidebar{
         display: none;
     }
@@ -306,6 +277,7 @@ footer{
     .logo{
         height: 50px;
         width: 50px;
+        min-width: 50px;
         margin: 5px;
     }
 
