@@ -1,0 +1,45 @@
+p.descripcion-producto, h1, h2, h3{
+    color: black;
+    font-family: Oswald, Arial, Helvetica, sans-serif;
+}
+
+.navbar ul{
+    display: none;
+}
+
+aside.sidebar{
+    display: none;
+}
+
+.main-container{
+    width: 100%;
+}
+
+footer{
+    background-color: white;
+    position: relative;
+    bottom: 0;
+    margin-bottom: 10px;
+}
+
+.cont-logo-title{
+    width: calc(100% - 40px); /* Le resto el margen para que no se salga */
+    margin-top: 20px;
+    margin-left: 40px;
+    padding: 0;
+}
+
+.title{
+    width: 100%;
+}
+
+.product-text{
+    width: 80%;
+}
+
+.product-images{
+    width: calc(20% - 20px); /* 20% - el margen */
+    margin-right: 20px;
+}
+
+/* TODO imprimir responsive: text width 100% imagnes una debajo de otra */

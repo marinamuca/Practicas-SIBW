@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>MiMimiMundo</title>
+        <meta charset="utf-8">
+        <!--Links CSS-->
+        <link rel="stylesheet" href="static/css/base.css">
+        <script src="https://kit.fontawesome.com/35f230cea2.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!--Cabecera de portada.html-->
+        <header>
+            <div class="cont-logo-title">
+                <!-- Contenedor del logo -->
+                <div class="logo">
+                    <img src="static/image/logo.jpg">
+                </div>
+                <div class="title">
+                    <span>MiMimiMundo</span>
+                </div>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li>
+                        <a href="portada.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="producto.html">Producto</a>
+                    </li>
+                    <li>
+                        <a href="producto_imprimir.html">Imprimir</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Contenedor Sidebar y main container -->
+        <section class="cont-sidebar-main">
+            <!-- Main content (Product info) -->
+            <article class="main-container">
+
+                <article class="product-text">
+                    <!--Nombre del producto-->
+                    <h1 class="title-product">Lámina Aurora</h1>
+                    <!-- Subtitulo -->
+                    <h2 class="subtitle-product"> Personaje Original de Mimi Pink </h2>
+
+                    <div class="price-comment-cont">
+                        <!--Precio-->
+                        <h3 class="price"> Precio: 20€ </h3>
+                        <!--Abrir Comentarios-->
+                        <button id="comment-btn">
+                            <i class="fa-solid fa-comment"></i>
+                        </button>
+                    </div>
+
+                    <div id="comments" class="panel-comment">
+                        <ul class="comment-container">
+                            <li class="comment">
+                                <span class="date">21/03/2022 - 17:20</span>
+                                <span class="author">Marina:</span>
+                                <span class="texto">Comentario 2</span>
+                            </li>
+                            <li class="comment">
+                                <span class="date">21/03/2022 - 17:10</span>
+                                <span class="author">Marina:</span>
+                                <span class="texto">Comentario 1</span>
+                            </li>
+                        </ul>
+                        <span>Haz tu comentario:</span>
+                        <form id="comment-form" name="comentar">
+                            <div class="form-field">
+                                <input type="text" placeholder="Nombre" id="nombre" >
+                            </div>
+                            <div class="form-field">
+                                <input type="text" placeholder="Email" id="email" >  
+                            </div>
+                            <div class="form-field">
+                                <input type="text" placeholder="Comentario" id="texto-comment" name="comentario" >
+                            </div>
+                            <div class="form-field">
+                                <input type="button" value="Enviar" id="submit-btn">
+                            </div>           
+                        </form>
+                    </div>
+
+                    <!-- Descripción -->
+                    <p class="descripcion-producto">
+                        Lorem ipsum dolor sit amet consectetur adipiscing elit tellus commodo arcu, augue placerat in
+                        rhoncus scelerisque convallis felis iaculis. Per curabitur est vestibulum turpis quam pellentesque
+                        platea ac habitasse, ridiculus taciti tincidunt nibh risus quisque imperdiet mus sollicitudin, eros
+                        pretium rhoncus mollis conubia laoreet odio primis. Ante mollis nec justo eget ultrices montes id in
+                        aenean, sodales praesent ullamcorper auctor sollicitudin laoreet sagittis.
+                    </p>
+                    <p class="descripcion-producto">
+                        Dictum nulla habitasse ridiculus nascetur turpis mus duis aliquam, torquent per mollis tortor luctus
+                        nostra habitant augue parturient, eleifend quam nibh cras pharetra felis montes. Placerat magnis eu
+                        molestie ridiculus in magna fermentum ultricies, morbi vehicula parturient nisl volutpat ante aenean
+                        viverra sed, sagittis vestibulum felis euismod varius sollicitudin a. Interdum maecenas ullamcorper
+                        eleifend cubilia id augue donec praesent non, vel in facilisi lectus faucibus semper congue metus
+                        pretium, ridiculus hendrerit ligula habitasse eu volutpat egestas purus. Ridiculus interdum rhoncus
+                        est conubia proin malesuada, hac sociosqu erat massa nullam dui luctus, class in mattis netus nam.
+                    </p>
+                    <p class="descripcion-producto">
+                        Bibendum himenaeos pulvinar varius sed eros eget, euismod odio ut id augue, tellus lacus tempus duis
+                        ad. Sagittis fermentum lacinia imperdiet urna curae eget aenean enim semper, inceptos praesent at
+                        interdum senectus tellus parturient rutrum, nulla vel auctor in mattis nibh quam purus. Platea
+                        ridiculus purus ligula hac odio egestas aenean praesent, dis in a mattis malesuada natoque magna,
+                        erat tortor arcu sed dui hendrerit dictum. Primis dictum mauris ultricies aliquet ridiculus potenti
+                        montes facilisi, scelerisque iaculis inceptos diam posuere egestas nibh interdum malesuada, sodales
+                        class commodo habitasse turpis torquent est.
+                    </p>
+                </article>
+
+                <!--Imagenes del producto-->
+                <div class="product-images">
+                    <figure>
+                        <div class="container-img">
+                            <img src="./static/image/Aurora.jpeg" alt="Aurora Character Concept">
+                        </div>
+                        <figcaption>Concept Art Aurora</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="container-img">
+                            <img src="./static/image/AuroraPlaya.jpeg" alt="Aurora Character Concept">
+                        </div>
+                        <figcaption>Ilustracion Aurora en la playa</figcaption>
+                    </figure>
+
+                </div>
+            </article>
+            <!--sidebar-->
+            <aside class="sidebar">
+                <div class="sidebar-content">
+                    <!-- Titulo de la Sidebar -->
+                    <h3>
+                        Redes Sociales
+                    </h3>
+                    <!-- Enlaces de la Sidebar -->
+                    <ul>
+                        <!--Instagram-->
+                        <li>
+                            <div class="rrss">
+                                <a href="https://www.instagram.com/mimimimundo/" target="_blank"><img
+                                        src="./static/image/instalogo.png" alt="Instagram"> <span>Instagram</span></a>
+                            </div>
+                        </li>
+                        <!--Twitch-->
+                        <li>
+                            <div class="rrss">
+                                <a href="https://www.twitch.tv/mimimimundoo" target="_blank">
+                                    <img src="./static/image/twitchlogo.png" alt="Twitch"> <span>Twitch</span>
+                                </a>
+                            </div>
+                        </li>
+                        <!--Discord-->
+                        <li>
+                            <div class="rrss">
+                                <a href="https://discord.com/invite/ndWjq4uDND" target="_blank">
+                                    <img src="./static/image/discord-logo.png" alt="Discord"><span>Discord</span>
+                                </a>
+                            </div>
+                        </li>
+                        <!--Twitter-->
+                        <li>
+                            <div class="rrss">
+                                <a href="https://twitter.com/MiMimiMundo" target="_blank">
+                                    <img src="./static/image/twitterLogo.png" alt="Twitter"><span>Twitter</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </section>
+        <footer>
+            <span class="copyright">Copyright © 2022 MiMimiMundo | Desarrollado por Marina Muñoz Cano </span>
+        </footer>
+    </body>
+    <script src="static/js/comments.js" ></script>
+
+    <!-- <script>
+        console.log("Entro en script");
+        document.getElementById("comment-btn").addEventListener("click", showComments);
+
+        function showComments(){
+            document.getElementById("comments").classList.toggle("panel-comment-show");
+        }
+    </script> -->
+
+</html>
