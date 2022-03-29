@@ -1,27 +1,30 @@
-// Mostrar comentarios
-window.onload = listeners;
-var comentario;
+// Mostrar comentarioTextos
+window.onload = initialize;
+var comentarioTexto;
 
-function listeners() {
+function initialize() {
     document.getElementById("comment-btn").addEventListener("click", showComments);
     document.getElementById("submit-btn").addEventListener("click", submitForm);
-    comentario = document.getElementById("texto-comment");
-    comentario.addEventListener("keypress", detectarPalabras);
+    comentarioTexto = document.getElementById("texto-comment");
+    comentarioTexto.addEventListener("keypress", detectarPalabras);
 };
 
+// Muestra el panel de comentarios
 function showComments() {
     document.getElementById("comments").classList.toggle("panel-comment-show");
 }
 
+// Detecta cada vez que se termina de escribir una palabra
 function detectarPalabras(key) {
     if(key.code == "Space")
-        checkBadWords(comentario);
+        checkBadWords(comentarioTexto);
 }
 
-function checkBadWords(comentario){
-    var badWords = ['gilipollas', 'tonto', 'mierda', 'puta'];
+// Cambia las palabrotas por asteriscos
+function checkBadWords(comentarioTexto){
+    var badWords = ['gilipollas', 'tonto', 'mierda', 'puta', 'idiota'];
     var ultPalabra = [];
-    ultPalabra = ultPalabra.concat(comentario.value.split(" "));
+    ultPalabra = ultPalabra.concat(comentarioTexto.value.split(" "));
     for (var i = 0; i < badWords.length; i++) {
         if (ultPalabra[ultPalabra.length - 1] == badWords[i]) {
             // Genero tanto asteriscos como letras tiene la palabra
@@ -29,18 +32,61 @@ function checkBadWords(comentario){
             for (var j = 0; j < badWords[i].length; j++) 
                 asteriscos += '*';
             // Reemplazo la palabra por los asteriscos
-            comentario.value = comentario.value.replace(badWords[i], asteriscos);
+            comentarioTexto.value = comentarioTexto.value.replace(badWords[i], asteriscos);
         }             
     }
 
   }
 
 function submitForm(){
-    
-    if(checkFields()){
-        //Añadir Comentario a lista
+    var form = document.getElementById("comment-form");
 
+    if(checkFields()){
+        //Añadir comentario Texto a lista comentarios
+        checkBadWords(comentarioTexto);
+        addComment(form.elements["nombre"], form.elements["texto-comment"]);
+        clearInput(form.elements["nombre"]);
+        clearInput(form.elements["email"]);
+        clearInput(form.elements["texto-comment"]);
     }
+}
+
+//Resetea el input de un fromulario que se le pasa como parametro
+function clearInput(input){
+    input.value = ''
+}
+
+//Crea un span con el texto y el id que se le pasa como parametro
+function createSpan(texto, classname){
+    var span = document.createElement("span");
+    span.append(document.createTextNode(texto));
+    span.classList.add(classname)
+    return span;
+}
+
+//Crea un li con el id que se le pasa como parametro
+function createLi(classname){
+    var li = document.createElement("li");
+    li.classList.add(classname);
+    return li;
+}
+
+// Formatea la fecha actual en formato DD/MM/YY - HH:MM
+function formatDate(date){
+    var dateString = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " - " + date.getHours() + ":" + ((date.getMinutes()<10?'0':'') + date.getMinutes() + " ");
+    return dateString;
+}
+
+//Añade un nuevo comentario a la lista de comentarios
+function addComment(author, texto){
+    var listComments = document.getElementById("comment-list");
+    var newcomment = createLi("comment");
+    var date = formatDate(new Date());
+    newcomment.append(createSpan(date + " ", "date"));
+    newcomment.append(createSpan(author.value + ": ", "author"));
+    newcomment.append(createSpan(texto.value, "texto"));
+    listComments.prepend(newcomment);
+
 }
 
 //Comprueba que los campos del promulario sean correctos
@@ -48,12 +94,12 @@ function checkFields(){
     var name = document.getElementById("nombre");
     var email = document.getElementById("email");
     var texto = document.getElementById("texto-comment");
-    var error = false;
+    var correct = true;
 
     //Compruebo que todos los campos estén llenos
     if(isEmpty(name.value)){
         alert("Debe rellenar el campo nombre.");
-        error = true;
+        correct = false;
         name.classList.add("error");
     } else {
         name.classList.remove("error");
@@ -61,25 +107,26 @@ function checkFields(){
 
     if(isEmpty(email.value)){
         alert("Debe rellenar el campo email.");
-        error = true;
+        correct = false;
         email.classList.add("error");
     } else if(!isValidEmail(email.value)){
         alert("Email no valido.");
-        error = true;
+        correct = false;
         email.classList.add("error");
-    } else 
+    } else {
         email.classList.remove("error");
+    }
 
 
     if(isEmpty(texto.value)){
         alert("Debe rellenar el campo texto.");
-        error = true;
+        correct = false;
         texto.classList.add("error");
     } else {
         texto.classList.remove("error");
     }   
         
-    return error;
+    return correct;
 }
 
 //Comprueba si un campo está vacio

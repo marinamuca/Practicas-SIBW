@@ -36,7 +36,7 @@ h2.subtitle-product{
         border-radius: 10px;
     }
 
-    button#comment-btn:hover, button#comment-btn:focus{
+    button#comment-btn:hover{
         background-color: var(--lighter-pink);
     }
 
@@ -108,6 +108,10 @@ h2.subtitle-product{
     form#comment-form input#submit-btn{
         cursor: pointer;
         color: var(--main-pink);
+        box-shadow: 0 5px 5px 0 var(--shadow);
+    }
+    form#comment-form input#submit-btn:hover{
+        box-shadow: 0 5px 5px 0 var(--dark-shadow);
     }
 
     form#comment-form input.error{
