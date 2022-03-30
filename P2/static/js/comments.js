@@ -49,6 +49,7 @@ function submitForm(){
         clearInput(form.elements["email"]);
         clearInput(form.elements["texto-comment"]);
     }
+
 }
 
 //Resetea el input de un fromulario que se le pasa como parametro
@@ -73,7 +74,7 @@ function createLi(classname){
 
 // Formatea la fecha actual en formato DD/MM/YY - HH:MM
 function formatDate(date){
-    var dateString = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " - " + date.getHours() + ":" + ((date.getMinutes()<10?'0':'') + date.getMinutes() + " ");
+    var dateString = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " - " + date.getHours() + ":" + ((date.getMinutes()<10?'0':'') + date.getMinutes() + ' ');
     return dateString;
 }
 
@@ -83,7 +84,7 @@ function addComment(author, texto){
     var newcomment = createLi("comment");
     var date = formatDate(new Date());
     newcomment.append(createSpan(date + " ", "date"));
-    newcomment.append(createSpan(author.value + ": ", "author"));
+    newcomment.append(createSpan(" " + author.value + ": ", "author"));
     newcomment.append(createSpan(texto.value, "texto"));
     listComments.prepend(newcomment);
 
@@ -98,31 +99,34 @@ function checkFields(){
 
     //Compruebo que todos los campos estén llenos
     if(isEmpty(name.value)){
-        alert("Debe rellenar el campo nombre.");
+        document.getElementById("error-nombre").innerText="Debe rellenar el campo Nombre.";
         correct = false;
         name.classList.add("error");
     } else {
+        document.getElementById("error-nombre").innerText = "";
         name.classList.remove("error");
     }
 
     if(isEmpty(email.value)){
-        alert("Debe rellenar el campo email.");
+        document.getElementById("error-email").innerText="Debe rellenar el campo Email.";
         correct = false;
         email.classList.add("error");
     } else if(!isValidEmail(email.value)){
-        alert("Email no valido.");
+        document.getElementById("error-email").innerText="Email no válido.";
         correct = false;
         email.classList.add("error");
     } else {
+        document.getElementById("error-email").innerText = "";
         email.classList.remove("error");
     }
-
-
+    
+    
     if(isEmpty(texto.value)){
-        alert("Debe rellenar el campo texto.");
+        document.getElementById("error-comment").innerText="Debe rellenar el campo Comentario.";
         correct = false;
         texto.classList.add("error");
     } else {
+        document.getElementById("error-comment").innerText = "";
         texto.classList.remove("error");
     }   
         

@@ -95,7 +95,6 @@ h2.subtitle-product{
         background-color: white;
         padding: 5px;
         font-size: 15px;
-        margin-bottom: 5px;
         width: 100%;
         color: var(--dark-pink);
     }
@@ -116,6 +115,15 @@ h2.subtitle-product{
 
     form#comment-form input.error{
         border: 1px solid rgb(219, 26, 26);
+    }
+
+    span.error{
+        display: block;
+        font-size: small;
+        color: rgb(219, 26, 26);
+        margin-bottom: 5px;
+        margin-left: 5px;
+
     }
 
 /* FIN Comentarios */
