@@ -182,7 +182,6 @@ header{
         z-index: 0;
         overflow: scroll; /* Para que si se hace mas pequeña la ventana por abajo, se puedan ver todas las redes */
         background-color: var(--lighter-pink);
-
     }
 
 

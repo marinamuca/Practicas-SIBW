@@ -60,7 +60,7 @@ function clearInput(input){
 //Crea un span con el texto y el id que se le pasa como parametro
 function createSpan(texto, classname){
     var span = document.createElement("span");
-    span.append(document.createTextNode(texto));
+    span.innerText = texto;
     span.classList.add(classname)
     return span;
 }
@@ -83,8 +83,8 @@ function addComment(author, texto){
     var listComments = document.getElementById("comment-list");
     var newcomment = createLi("comment");
     var date = formatDate(new Date());
-    newcomment.append(createSpan(date + " ", "date"));
-    newcomment.append(createSpan(" " + author.value + ": ", "author"));
+    newcomment.append(createSpan(date, "date"));
+    newcomment.append(createSpan(author.value + ": ", "author"));
     newcomment.append(createSpan(texto.value, "texto"));
     listComments.prepend(newcomment);
 

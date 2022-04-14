@@ -46,47 +46,10 @@
                     <!-- Subtitulo -->
                     <h2 class="subtitle-product"> Personaje Original de Mimi Pink </h2>
 
-                    <div class="price-comment-cont">
-                        <!--Precio-->
-                        <h3 class="price"> Precio: 20€ </h3>
-                        <!--Abrir Comentarios-->
-                        <button id="comment-btn">
-                            <i class="fa-solid fa-comment"></i>
-                        </button>
-                    </div>
-
-                    <div id="comments" class="panel-comment">
-                        <ul class="comment-container" id="comment-list">
-                            <li class="comment">
-                                <span class="date">21/03/2022 - 17:20</span>
-                                <span class="author">Marina:</span>
-                                <span class="texto">Comentario 2</span>
-                            </li>
-                            <li class="comment">
-                                <span class="date">21/03/2022 - 17:10</span>
-                                <span class="author">Marina:</span>
-                                <span class="texto">Comentario 1</span>
-                            </li>
-                        </ul>
-                        <span>Haz tu comentario:</span>
-                        <form id="comment-form" name="comentar">
-                            <div class="form-field">
-                                <input type="text" placeholder="Nombre" id="nombre" >
-                                <span id="error-nombre" class="error"></span>
-                            </div>
-                            <div class="form-field">
-                                <input type="text" placeholder="Email" id="email" >  
-                                <span id="error-email" class="error"></span>
-                            </div>
-                            <div class="form-field">
-                                <input type="text" placeholder="Comentario" id="texto-comment" name="comentario" >
-                                <span id="error-comment" class="error"></span>
-                            </div>
-                            <div class="form-field">
-                                <input type="button" value="Enviar" id="submit-btn">
-                            </div>           
-                        </form>
-                    </div>
+                  
+                    <!--Precio-->
+                    <h3 class="price"> Precio: 20€ </h3>
+                    
 
                     <!-- Descripción -->
                     <p class="descripcion-producto">
@@ -114,6 +77,7 @@
                         montes facilisi, scelerisque iaculis inceptos diam posuere egestas nibh interdum malesuada, sodales
                         class commodo habitasse turpis torquent est.
                     </p>
+
                 </article>
 
                 <!--Imagenes del producto-->
@@ -131,6 +95,45 @@
                         <figcaption>Ilustracion Aurora en la playa</figcaption>
                     </figure>
 
+                </div>
+                 <!--Abrir Comentarios-->
+                <button id="comment-btn">
+                    <span>Comentarios</span>
+                    <i class="fa-solid fa-comment"></i>
+                </button>
+
+                <!-- Caja de comentarios -->
+                <div id="comments" class="panel-comment">
+                    <ul class="comment-container" id="comment-list">
+                        <li class="comment">
+                            <span class="date">21/03/2022 - 17:20</span>
+                            <span class="author">Marina:</span>
+                            <span class="texto">Comentario 2</span>
+                        </li>
+                        <li class="comment">
+                            <span class="date">21/03/2022 - 17:10</span>
+                            <span class="author">Marina:</span>
+                            <span class="texto">Comentario 1</span>
+                        </li>
+                    </ul>
+                    <span>Haz tu comentario:</span>
+                    <form id="comment-form" name="comentar">
+                        <div class="form-field">
+                            <input type="text" placeholder="Nombre" id="nombre" >
+                            <span id="error-nombre" class="error"></span>
+                        </div>
+                        <div class="form-field">
+                            <input type="text" placeholder="Email" id="email" >  
+                            <span id="error-email" class="error"></span>
+                        </div>
+                        <div class="form-field">
+                            <input type="text" placeholder="Comentario" id="texto-comment" name="comentario" >
+                            <span id="error-comment" class="error"></span>
+                        </div>
+                        <div class="form-field">
+                            <input type="button" value="Enviar" id="submit-btn">
+                        </div>           
+                    </form>
                 </div>
             </article>
             <!--sidebar-->
@@ -182,14 +185,5 @@
         </footer>
     </body>
     <script src="static/js/comments.js" ></script>
-
-    <!-- <script>
-        console.log("Entro en script");
-        document.getElementById("comment-btn").addEventListener("click", showComments);
-
-        function showComments(){
-            document.getElementById("comments").classList.toggle("panel-comment-show");
-        }
-    </script> -->
 
 </html>

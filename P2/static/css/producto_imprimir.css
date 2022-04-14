@@ -40,6 +40,18 @@ footer{
 .product-images{
     width: calc(20% - 20px); /* 20% - el margen */
     margin-right: 20px;
+    height: auto;
 }
+
+@media only screen and (max-width: 960px){
+    .product-text{
+        width: 100%;
+    }
+
+    .product-images{
+        width: 100%;
+    }
+}
+
 
 /* TODO imprimir responsive: text width 100% imagnes una debajo de otra */
