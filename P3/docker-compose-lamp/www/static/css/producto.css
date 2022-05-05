@@ -1,0 +1,280 @@
+h1.title-product{
+    margin: 25px;
+    margin-left: 0;
+}
+
+h2.subtitle-product{
+    width: 50%;
+    margin-top: 0;
+}
+
+.price{
+    float: left;
+    margin: 0;
+    padding: 0;
+    font-size: medium;
+    text-align: left;
+}
+/* Comentarios */
+    button#comment-btn, button#print-btn{
+        background-color: white;
+        /* border: 1px solid var(--main-pink); */
+        box-shadow: 5px 5px 5px 0 var(--shadow);
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        margin: 20px;
+        margin-left: 50px; 
+        margin-top: 0;          
+    }
+
+    button#print-btn{
+        margin-left: 0;
+    }
+    button#print-btn a{
+        text-decoration: none;
+    }
+
+
+    button#comment-btn span,  button#print-btn span{
+        font-size: 20px;
+        margin-right: 5px;
+    }
+    
+    button#comment-btn:active, button#print-btn:active{
+        background-color: white;
+        box-shadow: 1px 1px 1px 0 var(--shadow);
+        transform: translateY(4px);
+    }
+
+    .fa-comment, .fa-print{
+        font-size: 20px;
+    }
+
+    .comment-container{
+        display: flex;
+        width: 100%;
+        justify-content: right;
+        flex-wrap: wrap;
+    }
+
+    .panel-comment{
+        display: none;
+        margin-left: 50px;
+        margin-right: 20px;
+
+    }
+
+    .panel-comment-show{
+        display: block;
+        width: 100%;
+        position: relative;
+        float: right;
+        background-color: var(--lighter-pink);
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .panel-comment .date, .panel-comment .author{
+        display: inline;
+        margin-bottom: 5px;
+    }
+
+    .panel-comment .texto{
+        border-radius: 5px;
+        display: block;
+        background-color: white;
+        padding: 5px;
+        color: var(--dark-pink);
+    }
+
+    .comment{
+        width: 100%;
+        padding-bottom: 10px;
+    }
+
+    form#comment-form{
+        width: 100%;
+    }
+
+    form#comment-form input{
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        padding: 5px;
+        font-size: 15px;
+        width: 100%;
+        color: var(--dark-pink);
+    }
+
+    form#comment-form input:focus{
+        outline-color: var(--main-pink);
+        background-color: white;
+    }
+
+    form#comment-form input#submit-btn{
+        cursor: pointer;
+        color: var(--main-pink);
+        box-shadow: 0 5px 5px 0 var(--shadow);
+    }
+    form#comment-form input#submit-btn:active{
+        box-shadow: 1px 1px 1px 0 var(--shadow);
+        transform: translateY(4px);
+    }
+
+    form#comment-form input.error{
+        border: 1px solid rgb(219, 26, 26);
+    }
+
+    .error{
+        display: block;
+        font-size: small;
+        color: rgb(219, 26, 26);
+        margin-bottom: 5px;
+        margin-left: 5px;
+
+    }
+
+/* FIN Comentarios */
+
+
+p.descripcion-producto{
+    margin-top: 0;
+    margin-right: 20px;
+    font-weight: normal;
+    text-align: justify;
+    font-size: 18px;
+    color: var(--dark-pink);
+}
+
+.product-images{
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 0;
+    width: 50%;
+    height: auto;
+    float: right;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-text{
+    width: 50%;
+}
+
+.product-images .container-img{
+    float: right;
+    width: 100%;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.product-images .container-img:hover{
+    border-color: var(--light-pink);
+    box-shadow: 0 8px 8px 0 var(--shadow);
+}
+
+figure {
+    margin: 0;
+    display: inline-block;
+    padding: 5px;
+}
+
+figcaption {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+
+
+/* Responsive */
+/* Para pantallas muy grandes, las imagenes se ponen debajo del texto para que no quede mucho hueco en blanco */
+/* @media only screen and (max-width: 2560px){
+
+    .product-text{
+        padding-right: 20px;
+        width: 100%;
+    }
+
+    .product-images{
+        width: 100%;
+    }
+
+    figure{
+        padding-right: 100px;
+        width: 40%;
+    }
+
+} */
+
+@media only screen and (max-width: 1600px){
+    .product-text{
+        width: 50%;
+    }
+   
+    .product-images{
+        width: 50%;
+    }
+
+    figure{
+        padding: 0;
+        width: 100%;
+    }
+
+    footer{
+        position: relative;
+    }
+    
+}
+
+@media only screen and (max-width: 950px) {
+    .product-text{
+        padding-right: 20px;
+        width: 100%;
+    }
+
+    .product-images{
+        width: 100%;
+        margin-left: 50px;
+    }
+
+    figure{
+        padding-right: 15px;
+        width: 90%;
+    }
+
+    .product-text, .product-images .container-img, .panel-comment, .comment-btn{
+        margin: 0px 20px;
+    }
+
+    figcaption{
+        width: 0px;
+        display: none;
+    }
+
+    
+}
+
+
+@media only screen and (max-width: 700px) {
+    .product-images .container-img{
+        margin-bottom: 15px;
+    }
+    .product-images{
+       padding: 0;
+    }
+/* 
+    .product-text, .product-images,  .panel-comment, .comment-btn{
+        margin: 0px 20px;
+    } */
+
+    .product-text{
+        padding: 0;
+    }
+
+}

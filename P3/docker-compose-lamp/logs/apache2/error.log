@@ -1,0 +1,72 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.5. Set the 'ServerName' directive globally to suppress this message
+[Mon Apr 04 14:07:03.757566 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Apr 04 14:07:03.758492 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Mon Apr 04 14:44:52.074675 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.5. Set the 'ServerName' directive globally to suppress this message
+[Mon Apr 04 14:44:54.902530 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Apr 04 14:44:54.903264 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.5. Set the 'ServerName' directive globally to suppress this message
+[Mon Apr 04 14:54:28.516296 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Apr 04 14:54:28.516964 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.4. Set the 'ServerName' directive globally to suppress this message
+[Mon Apr 04 15:03:25.353186 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Apr 04 15:03:25.354217 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.4. Set the 'ServerName' directive globally to suppress this message
+[Mon Apr 04 15:04:38.050880 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Apr 04 15:04:38.051785 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Apr 09 14:32:24.490068 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Apr 09 14:32:24.491613 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sat Apr 09 15:20:05.888510 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon Apr 11 14:21:40.716858 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Apr 11 14:21:40.718435 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Apr 12 15:01:49.476433 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Tue Apr 12 15:01:49.477418 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.5. Set the 'ServerName' directive globally to suppress this message
+[Tue Apr 12 15:14:17.701857 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Tue Apr 12 15:14:17.702671 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.5. Set the 'ServerName' directive globally to suppress this message
+[Tue Apr 12 15:44:57.797298 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Tue Apr 12 15:44:57.800367 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Apr 12 15:45:25.884803 2022] [autoindex:error] [pid 17] [client 172.19.0.1:58216] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Tue Apr 12 15:45:51.319621 2022] [autoindex:error] [pid 18] [client 172.19.0.1:58224] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Tue Apr 12 15:45:51.558210 2022] [php7:error] [pid 18] [client 172.19.0.1:58224] script '/var/www/html/phpinfo.php' not found or unable to stat
+[Tue Apr 12 15:45:53.222130 2022] [autoindex:error] [pid 18] [client 172.19.0.1:58224] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Tue Apr 12 15:47:05.875238 2022] [php7:error] [pid 26] [client 172.19.0.1:58274] script '/var/www/html/test_db.php' not found or unable to stat
+[Tue Apr 12 16:08:28.419516 2022] [php7:error] [pid 30] [client 172.19.0.1:58438] script '/var/www/html/portada.php' not found or unable to stat
+[Tue Apr 12 17:34:04.330004 2022] [php7:error] [pid 49] [client 172.19.0.1:58854] script '/var/www/html/portada.php' not found or unable to stat, referer: http://localhost/
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Wed Apr 13 08:25:04.133716 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Apr 13 08:25:04.135045 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Wed Apr 13 08:52:26.967271 2022] [php7:error] [pid 23] [client 172.19.0.1:63770] script '/var/www/html/test_db.php' not found or unable to stat
+[Wed Apr 13 15:25:38.675967 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Apr 14 08:59:46.304394 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Thu Apr 14 08:59:46.305102 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Apr 14 15:32:30.476538 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.5. Set the 'ServerName' directive globally to suppress this message
+PHP Warning:  PHP Startup: Unable to load dynamic library 'gd' (tried: /usr/local/lib/php/extensions/no-debug-non-zts-20190902/gd (/usr/local/lib/php/extensions/no-debug-non-zts-20190902/gd: cannot open shared object file: No such file or directory), /usr/local/lib/php/extensions/no-debug-non-zts-20190902/gd.so (/usr/local/lib/php/extensions/no-debug-non-zts-20190902/gd.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Thu Apr 14 15:32:40.647673 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Thu Apr 14 15:32:40.648572 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Fri Apr 15 10:25:30.775203 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Fri Apr 15 10:25:30.777574 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sun Apr 17 12:25:02.248859 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sun Apr 17 12:25:02.251944 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat Apr 23 12:35:37.950267 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat Apr 23 12:35:37.951140 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Apr 24 18:17:45.369892 2022] [php7:error] [pid 26] [client 172.19.0.1:61340] script '/var/www/html/producto_imprimir.php' not found or unable to stat, referer: http://localhost/producto.php?prod=3
+[Sun Apr 24 18:20:33.733178 2022] [php7:error] [pid 25] [client 172.19.0.1:61346] script '/var/www/html/producto_imprimir.php' not found or unable to stat, referer: http://localhost/producto.php?prod=3
+[Sun Apr 24 18:20:36.820331 2022] [php7:error] [pid 25] [client 172.19.0.1:61346] script '/var/www/html/producto_imprimir.php' not found or unable to stat, referer: http://localhost/producto.php?prod=3
+[Sun Apr 24 18:21:33.606309 2022] [php7:error] [pid 19] [client 172.19.0.1:61348] script '/var/www/html/producto_imprimir.php' not found or unable to stat, referer: http://localhost/producto.php?prod=3
+[Sun Apr 24 18:21:46.267596 2022] [php7:error] [pid 24] [client 172.19.0.1:61358] script '/var/www/html/producto_imprimir.php' not found or unable to stat, referer: http://localhost/producto.php?prod=3
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon Apr 25 13:37:02.710616 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon Apr 25 13:37:02.711541 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Thu May 05 08:50:54.290896 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Thu May 05 08:50:54.291604 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
