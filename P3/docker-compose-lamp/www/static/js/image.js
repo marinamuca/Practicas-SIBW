@@ -1,28 +1,34 @@
-let slideIndex = 1;
+// no uso onload, por que si no sobrecarga al de comentarios y
+// no funciona el botón que despliega la caja de comentarios
+window.onanimationstart = initialize;
+var slideIndex = 1;
 showSlides(slideIndex);
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function initialize() {
+    document.getElementById("prev").addEventListener("click", previous);
+    document.getElementById("next").addEventListener("click", next);
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function next(){
+    showSlides(slideIndex += 1);
+}
+function previous(){
+    showSlides(slideIndex -= 1);
 }
 
 function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
+  var i;
+  var slides = document.getElementsByClassName("slide");
+  var captions = document.getElementsByClassName("text");
+
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
+    captions[i].style.display = "none";
   }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
+
   slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+  captions[slideIndex-1].style.display = "block";
+
 }
