@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}{{ producto['nombre'] }}{% endblock title %}
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="static/css/carrusel.css">
+{% endblock head %}
+{% block main_content %}
+    {% block product_info %}
+         <!--Imagenes del producto-->
+         <div class="product-images"> {# Slideshow container #}   
+            {% for row in imagenes %}
+                <figure class="slide">
+                    <div class="container-img fade" >
+                        <img src="data:image/png;base64,{{ row['imagen'] }}" alt="{{ row['caption'] }}" />
+                    </div>
+                    <figcaption class="fade text">{{ row['caption'] }}</figcaption>
+                </figure>
+            {% endfor %} 
+            {% if imagenes|length > 1 %}      
+                <i id="prev" class="fa-solid fa-arrow-left-long prev"></i>
+            {% endif %}
+            {% if imagenes|length > 1 %}      
+                <i id="next" class="fa-solid fa-arrow-right-long next"></i>
+            {% endif %}
+         </div>
+
+        <article class="product-text">
+            <!--Nombre del producto-->
+            <h1 class="title-product">{{ producto['nombre'] }}</h1>
+            <!-- Subtitulo -->
+            <h2 class="subtitle-product"> 
+                <ul>
+                    <li>{{ producto['tamano'] }}</li>
+                    <li>{{ producto['papel'] }}</li>
+                </ul>
+            </h2>
+        
+        
+            <!--Precio-->
+            <h3 class="price">Precio: {{ producto['precio'] }}€</h3>
+        
+        
+            <!-- Descripción -->
+            <p class="descripcion-producto">
+                {{ producto['descripcion'] | nl2br }}
+            </p>
+            <button id="print-btn">
+                <a href="producto.php?prod={{ producto['id'] }}&print">
+                    <span>Imprimir</span>
+                    <i class="fa-solid fa-print"></i>
+                </a>
+            </button>
+        
+        </article>
+        
+       
+    {% endblock product_info %}   
+    {% block comments %}
+
+    <!--Abrir Comentarios-->
+    <button id="comment-btn">
+        <span>Comentarios</span>
+        <i class="fa-solid fa-comment"></i>
+    </button>
+
+    <!-- Caja de comentarios -->
+    <div id="comments" class="panel-comment">
+        <ul class="comment-container" id="comment-list">
+            {% for row in comments %}
+                <li class="comment">
+                    <span class="date">{{ row['fecha'] }}</span>
+                    <span class="author">{{ row['autor'] }}:</span>
+                    <span class="texto">{{ row['texto'] }}</span>
+                </li>
+            {% endfor %}   
+        </ul>
+        <span>Haz tu comentario:</span>
+        <form id="comment-form" name="comentar">
+            <div class="form-field">
+                <input type="text" placeholder="Nombre" id="nombre">
+                <span id="error-nombre" class="error"></span>
+            </div>
+            <div class="form-field">
+                <input type="text" placeholder="Email" id="email">
+                <span id="error-email" class="error"></span>
+            </div>
+            <div class="form-field">
+                <input type="text" placeholder="Comentario" id="texto-comment" name="comentario">
+                <span id="error-comment" class="error"></span>
+            </div>
+            <div class="form-field">
+                <input type="button" value="Enviar" id="submit-btn">
+            </div>
+        </form>
+    </div>
+    {% endblock comments %}
+
+
+{% endblock main_content %}
+{% block scripts %} 
+    <script type="text/javascript" src="static/js/comments.js" ></script>
+    <script type="text/javascript" src="static/js/image.js" ></script>
+{% endblock scripts %}
