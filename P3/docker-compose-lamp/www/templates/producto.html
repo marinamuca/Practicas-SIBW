@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 {% block title %}{{ producto['nombre'] }}{% endblock title %}
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="static/css/carrusel.css">
+{% endblock head %}
 {% block main_content %}
     {% block product_info %}
          <!--Imagenes del producto-->
          <div class="product-images"> {# Slideshow container #}   
             {% for row in imagenes %}
-                <figure>
-                    <div class="container-img">
+                <figure class="slide">
+                    <div class="container-img fade" >
                         <img src="data:image/png;base64,{{ row['imagen'] }}" alt="{{ row['caption'] }}" />
                     </div>
-                    <figcaption>{{ row['caption'] }}</figcaption>
+                    <figcaption class="fade text">{{ row['caption'] }}</figcaption>
                 </figure>
             {% endfor %} 
             {% if imagenes|length > 1 %}      
-                <i class="fa-solid fa-arrow-left-long"></i>
+                <i id="prev" class="fa-solid fa-arrow-left-long prev"></i>
             {% endif %}
             {% if imagenes|length > 1 %}      
-                <i class="fa-solid fa-arrow-right-long"></i>
+                <i id="next" class="fa-solid fa-arrow-right-long next"></i>
             {% endif %}
          </div>
 
@@ -68,18 +72,7 @@
                     <span class="author">{{ row['autor'] }}:</span>
                     <span class="texto">{{ row['texto'] }}</span>
                 </li>
-            {% endfor %}
-            {# <li class="comment">
-                <span class="date">21/03/2022 - 17:20</span>
-                <span class="author">Marina:</span>
-                <span class="texto">Comentario 2</span>
-            </li>
-            <li class="comment">
-                <span class="date">21/03/2022 - 17:10</span>
-                <span class="author">Marina:</span>
-                <span class="texto">Comentario 1</span>
-            </li> #}
-           
+            {% endfor %}   
         </ul>
         <span>Haz tu comentario:</span>
         <form id="comment-form" name="comentar">
@@ -105,6 +98,6 @@
 
 {% endblock main_content %}
 {% block scripts %} 
-<script src="static/js/comments.js" ></script>
-<script src="static/js/image.js" ></script>
+    <script type="text/javascript" src="static/js/comments.js" ></script>
+    <script type="text/javascript" src="static/js/image.js" ></script>
 {% endblock scripts %}

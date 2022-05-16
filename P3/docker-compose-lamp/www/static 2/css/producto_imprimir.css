@@ -1,0 +1,65 @@
+p.descripcion-producto, h1, h2, h3, li{
+    color: black;
+    font-weight: normal;
+    font-family: Oswald, Arial, Helvetica, sans-serif;
+}
+
+.navbar ul{
+    display: none;
+}
+
+aside.sidebar{
+    display: none;
+}
+
+.main-container{
+    width: 100%;
+}
+
+footer{
+    background-color: white;
+    position: relative;
+    bottom: 0;
+    margin-bottom: 10px;
+}
+
+.cont-logo-title{
+    width: calc(100% - 40px); /* Le resto el margen para que no se salga */
+    margin-top: 20px;
+    margin-left: 40px;
+    padding: 0;
+}
+
+.title{
+    width: 100%;
+}
+
+.product-text{
+    width: 50%;
+    margin: auto 0;
+}
+
+.product-images{
+    width: calc(50% - 20px); /* 20% - el margen */
+    height: auto;
+}
+
+button#print-btn, button#comment-btn{
+    display: none;
+}
+
+@media only screen and (max-width: 960px){
+    .product-text{
+        width: 100%;
+        margin:  0 70px;
+    }
+
+    .product-images{
+        width: 100%;
+        margin-left: 0;
+
+    }
+}
+
+
+/* TODO imprimir responsive: text width 100% imagnes una debajo de otra */
