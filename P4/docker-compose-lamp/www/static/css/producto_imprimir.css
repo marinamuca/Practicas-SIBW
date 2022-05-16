@@ -44,7 +44,7 @@ footer{
     height: auto;
 }
 
-button#print-btn, button#comment-btn{
+.botones, .next, .prev{
     display: none;
 }
 

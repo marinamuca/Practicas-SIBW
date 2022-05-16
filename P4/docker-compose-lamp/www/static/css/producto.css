@@ -15,8 +15,11 @@ h2.subtitle-product{
     font-size: medium;
     text-align: left;
 }
-/* Comentarios */
-    button#comment-btn, button#print-btn{
+/* Botones y caja comentarios */
+    .botones{
+        width: 100%;
+    }
+    .botones button{
         background-color: white;
         /* border: 1px solid var(--main-pink); */
         box-shadow: 5px 5px 5px 0 var(--shadow);
@@ -29,19 +32,19 @@ h2.subtitle-product{
     }
 
     button#print-btn{
-        margin-left: 0;
+        float: right;
     }
     button#print-btn a{
         text-decoration: none;
     }
 
 
-    button#comment-btn span,  button#print-btn span{
+    .botones button span{
         font-size: 20px;
         margin-right: 5px;
     }
     
-    button#comment-btn:active, button#print-btn:active{
+    .botones button:active{
         background-color: white;
         box-shadow: 1px 1px 1px 0 var(--shadow);
         transform: translateY(4px);
@@ -150,8 +153,8 @@ p.descripcion-producto{
 
 .product-images{
     padding: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
     padding-bottom: 0;
     width: 50%;
     height: auto;
@@ -181,7 +184,8 @@ p.descripcion-producto{
 
 figure {
     margin: 0;
-    display: inline-block;
+    width: calc(100% - 80px);
+    display: block;
     padding: 5px;
 }
 
@@ -189,8 +193,6 @@ figcaption {
     text-align: center;
     margin-bottom: 10px;
 }
-
-
 
 
 /* Responsive */
@@ -224,7 +226,7 @@ figcaption {
 
     figure{
         padding: 0;
-        width: 100%;
+        width: calc(100% - 80px); 
     }
 
     footer{
@@ -236,26 +238,21 @@ figcaption {
 @media only screen and (max-width: 950px) {
     .product-text{
         padding-right: 20px;
-        width: 100%;
+        width: 100% ;
     }
 
     .product-images{
         width: 100%;
-        margin-left: 50px;
+        /* margin-left: 50px; */
     }
 
     figure{
-        padding-right: 15px;
-        width: 90%;
+        /* padding-right: 15px; */
+        width: calc(90% - 40px) ;
     }
 
-    .product-text, .product-images .container-img, .panel-comment, .comment-btn{
+    .product-text, .panel-comment, button#comment-btn{
         margin: 0px 20px;
-    }
-
-    figcaption{
-        width: 0px;
-        display: none;
     }
 
     

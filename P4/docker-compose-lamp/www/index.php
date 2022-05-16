@@ -6,7 +6,7 @@
     $twig = new \Twig\Environment($loader);
 
     $msqli = dbConnect();
-    $productos = getProductos($msqli);
+    $productos = getAllProducts($msqli);
 
     echo $twig->render('portada.html', ['productos' => $productos])
 ?>

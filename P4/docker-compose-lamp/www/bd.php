@@ -1,9 +1,17 @@
 <?php
-    function queryDB($mysqli, $fields, $table, $id, $codProd, $order){
+    function queryDB($mysqli, $fields, $table, $id, $codigo, $order){
         $codProd = $mysqli->real_escape_string($codProd); // Para evitar inyección de codigo
 
-        $query = "SELECT $fields FROM $table WHERE $id = '$codProd' $order";
-        $result = $mysqli->query($query);
+        $sentencia = $mysqli->prepare("SELECT $fields FROM $table WHERE $id = ? $order");
+        $sentencia->bind_param("i", $codigo );
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+
+
+        // $query = "SELECT $fields FROM $table WHERE $id = '$codProd' $order";
+        //  $result = $mysqli->query($query);
+        $result = $sentencia->get_result();
         return $result;
     }
 
@@ -39,7 +47,7 @@
     }
 
     function getImagenesProducto($mysqli, $codProd){
-        $result = queryDB($mysqli, 'imagen, caption', 'imagen_producto','COD_PROD', $codProd, '');
+        $result = queryDB($mysqli, 'ruta, caption', 'imagen_producto','COD_PROD', $codProd, '');
         $infoImagen = array();
        
         if($result->num_rows > 0){
@@ -49,22 +57,22 @@
             $images = array();
             $caption = array();
             foreach ($rows as $key => $row) {
-                $infoImagen[$key] = ['imagen' => base64_encode($row['imagen']), 'caption' => $row['caption']];
+                $infoImagen[$key] = ['imagen' => $row['ruta'], 'caption' => $row['caption']];
             }
             
         }
         return $infoImagen;     
     }
 
-    function getProductos($mysqli){
+    function getAllProducts($mysqli){
         $result = queryDB($mysqli, 'COD_PROD, nombre', 'producto', 1, 1, 'ORDER BY Producto.COD_PROD ASC' );
        
         $rows = resultToArray($result);
 
         foreach ($rows as $key => $row) {
-           $res_img = queryDB($mysqli, 'imagen', 'imagen_producto', 'COD_PROD', $row['COD_PROD'], '' );
+           $res_img = queryDB($mysqli, 'ruta', 'imagen_producto', 'COD_PROD', $row['COD_PROD'], '' );
            $rows_img = resultToArray($res_img);
-           $productos[$key] = ['id' => $row['COD_PROD'], 'nombre' => $row['nombre'], 'imagen' => base64_encode($rows_img[0]['imagen'])];
+           $productos[$key] = ['id' => $row['COD_PROD'], 'nombre' => $row['nombre'], 'imagen' => $rows_img[0]['ruta']];
         }
 
         return $productos;

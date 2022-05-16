@@ -6,7 +6,7 @@
 <div class="product">
     <div class="container-img">
         <a href="producto.php?prod={{ row['id'] }}">
-            <img src="data:image/png;base64,{{ row['imagen'] }}" alt={{ row['nombre'] }}>
+            <img src="static/image/{{ row['imagen'] }}" alt={{ row['nombre'] }}>
             <div class="overlay">
                 <div class="product-name">
                    {{ row['nombre'] }}
