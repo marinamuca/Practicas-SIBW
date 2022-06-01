@@ -1,0 +1,22 @@
+{% extends "auth.html" %}
+{% block title %}Inicia sesión{% endblock title %}
+{% block auth_form %}
+    <h2>Inicia sesión en tu cuenta</h2>
+    <form id="login-form" name="login"  action="login.php" method="post">
+        <div class="form-field">
+            <input type="text" placeholder="Nombre de Usuario" name="username" class="{{ error.username }}" value="{{ username }}"> 
+            <span class="error">{{ errorMsgs.username }}</span>
+        </div>
+        <div class="form-field">
+            <input type="password" placeholder="Contraseña" name="password" class="{{ error.password }}">
+            <span class="error">{{ errorMsgs.password }}</span>
+        </div>
+        <div class="form-field">
+            <input type="submit" value="Enviar" id="submit-btn">
+        </div>
+    
+    </form>
+{% endblock auth_form %}
+{% block scripts %} 
+    <script type="text/javascript" src="static/js/validateLogin.js" ></script>
+{% endblock scripts %}

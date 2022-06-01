@@ -1,17 +1,28 @@
 <?php
     function queryDB($mysqli, $fields, $table, $id, $codigo, $order){
-        $codProd = $mysqli->real_escape_string($codProd); // Para evitar inyección de codigo
+        // $codProd = $mysqli->real_escape_string($codProd); // Para evitar inyección de codigo
 
         $sentencia = $mysqli->prepare("SELECT $fields FROM $table WHERE $id = ? $order");
-        $sentencia->bind_param("i", $codigo );
+
+        if($table == "usuarios"){
+            $sentencia->bind_param("s", $codigo );
+        }
+        else{
+            $sentencia->bind_param("i", $codigo );
+        }
+
         if (!$sentencia->execute()) {
             echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
         }
 
-
         // $query = "SELECT $fields FROM $table WHERE $id = '$codProd' $order";
         //  $result = $mysqli->query($query);
         $result = $sentencia->get_result();
+        return $result;
+    }
+
+    function queryALL($mysqli, $fields, $table){
+        $result = $mysqli->query("SELECT $fields FROM $table");
         return $result;
     }
 
@@ -29,6 +40,7 @@
         if($mysqli->connect_errno){
             echo("Fallo al conectar: " . $mysqli->connect_errno);
         }
+
         return $mysqli;
     }
 
@@ -108,5 +120,54 @@
         }
         return $badWordsJSON;
     }
+    
+    function getUsers($mysqli){
+        $result = queryALL($mysqli, 'username, password, email, COD_ROL','usuarios');
 
+        $rows = resultToArray($result);
+
+        foreach ($rows as $key => $row) {
+            $usuarios[$key] = ['username' => $row['username'], 'password' => $row['password'], 'email' => $row['email'], 'rol' => $row['COD_ROL']];
+        }
+        return $usuarios;
+    }
+
+    function getUser($mysqli, $field, $valor){
+        $res = queryDB($mysqli, 'username, password, email, COD_ROL', 'usuarios', $field, $valor, '');
+
+        if($res->num_rows > 0){
+            $row = $res-> fetch_assoc();
+            $user = array('username' => $row['username'], 'email' => $row['email'], 'password' => $row['password'], 'rol' => $row['COD_ROL']);
+        }
+
+        return $user;
+    }
+
+    function insertarUsuario($mysqli, $username, $email, $password){
+        if(!$sentencia = $mysqli->prepare("INSERT INTO Usuarios(username, password, email) VALUES (?, ?, ?)")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        
+        $sentencia->bind_param("sss", $username, $password, $email);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+
+        $sentencia->close();
+    }
+
+    function actualizarUsuario($mysqli, $columna, $otra_columna, $val_columna, $val_otra_columna){
+        if(!$sentencia = $mysqli->prepare("UPDATE Usuarios set $columna = ? where $otra_columna = ?")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        
+        $sentencia->bind_param("ss", $val_columna, $val_otra_columna);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+
+        $sentencia->close();
+    }
 ?>

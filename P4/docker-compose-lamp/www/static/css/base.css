@@ -1,10 +1,12 @@
 @import url("portada.css");
 @import url("producto.css");
+@import url("forms.css");
 
 /* Estilos de los elementos comunes a todas las paginas */
 
 :root{
     --lighter-pink: #faebf3;
+    --lighter-pink-shadow: #faebf38e;
     --light-pink: #f6d7e7;
     --light-pink-shadow: #f6d7e7a2;
     --main-pink: #e7788b;

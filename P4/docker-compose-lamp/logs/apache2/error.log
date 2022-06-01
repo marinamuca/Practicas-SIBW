@@ -141,3 +141,31 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.5. Set the 'ServerName' directive globally to suppress this message
 [Thu May 26 16:24:55.114815 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
 [Thu May 26 16:24:55.115928 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sat May 28 15:04:17.216264 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sat May 28 15:04:17.218197 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sat May 28 16:38:01.961426 2022] [php7:error] [pid 84] [client 172.19.0.1:59270] script '/var/www/html/login.php' not found or unable to stat, referer: http://localhost/producto.php?prod=2
+[Sat May 28 17:02:50.143597 2022] [php7:error] [pid 95] [client 172.19.0.1:59430] script '/var/www/html/auth.php' not found or unable to stat
+[Sat May 28 18:12:22.146278 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Sun May 29 10:21:18.964733 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Sun May 29 10:21:18.965726 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun May 29 12:59:16.226474 2022] [php7:error] [pid 46] [client 172.19.0.1:60176] script '/var/www/html/logout.php' not found or unable to stat, referer: http://localhost/index.php
+[Sun May 29 13:00:17.889897 2022] [php7:error] [pid 48] [client 172.19.0.1:60186] script '/var/www/html/logout.php' not found or unable to stat, referer: http://localhost/index.php
+[Sun May 29 13:00:18.059437 2022] [php7:error] [pid 48] [client 172.19.0.1:60186] script '/var/www/html/logout.php' not found or unable to stat, referer: http://localhost/index.php
+[Sun May 29 13:00:18.224945 2022] [php7:error] [pid 48] [client 172.19.0.1:60186] script '/var/www/html/logout.php' not found or unable to stat, referer: http://localhost/index.php
+[Sun May 29 13:00:18.379188 2022] [php7:error] [pid 48] [client 172.19.0.1:60186] script '/var/www/html/logout.php' not found or unable to stat, referer: http://localhost/index.php
+[Sun May 29 13:00:18.540892 2022] [php7:error] [pid 48] [client 172.19.0.1:60186] script '/var/www/html/logout.php' not found or unable to stat, referer: http://localhost/index.php
+[Sun May 29 13:00:18.684703 2022] [php7:error] [pid 48] [client 172.19.0.1:60186] script '/var/www/html/logout.php' not found or unable to stat, referer: http://localhost/index.php
+[Sun May 29 20:31:22.180330 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon May 30 13:40:07.282769 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon May 30 13:40:07.283829 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon May 30 18:13:04.257212 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Mon May 30 18:13:04.258513 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Mon May 30 19:02:28.289207 2022] [php7:error] [pid 21] [client 172.19.0.1:56294] script '/var/www/html/perfil.php' not found or unable to stat, referer: http://localhost/login.php
+[Mon May 30 19:04:08.728260 2022] [php7:error] [pid 30] [client 172.19.0.1:56318] script '/var/www/html/perfil.php' not found or unable to stat, referer: http://localhost/login.php
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 08:28:59.454833 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 08:28:59.456954 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'

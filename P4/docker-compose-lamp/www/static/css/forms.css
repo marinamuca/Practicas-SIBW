@@ -1,0 +1,40 @@
+form{
+    width: 100%;
+}
+
+input{
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    padding: 5px;
+    font-size: 15px;
+    width: 100%;
+    color: var(--dark-pink);
+}
+
+input:focus{
+    outline-color: var(--main-pink);
+    background-color: white;
+}
+
+input[type=button], input[type=submit]{
+    cursor: pointer;
+    color: var(--main-pink);
+    box-shadow: 0 5px 5px 0 var(--shadow);
+}
+
+input[type=button]:active, input[type=submit]:active{
+    box-shadow: 1px 1px 1px 0 var(--shadow);
+    transform: translateY(4px);
+}
+
+input.error{
+    border: 1px solid rgb(219, 26, 26);
+}
+
+span.error{
+    display: block;
+    font-size: small;
+    color: rgb(219, 26, 26);
+    margin: 5px;
+}

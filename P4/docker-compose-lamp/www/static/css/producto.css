@@ -38,7 +38,6 @@ h2.subtitle-product{
         text-decoration: none;
     }
 
-
     .botones button span{
         font-size: 20px;
         margin-right: 5px;
@@ -95,48 +94,6 @@ h2.subtitle-product{
     .comment{
         width: 100%;
         padding-bottom: 10px;
-    }
-
-    form#comment-form{
-        width: 100%;
-    }
-
-    form#comment-form input{
-        border: none;
-        border-radius: 5px;
-        background-color: white;
-        padding: 5px;
-        font-size: 15px;
-        width: 100%;
-        color: var(--dark-pink);
-    }
-
-    form#comment-form input:focus{
-        outline-color: var(--main-pink);
-        background-color: white;
-    }
-
-    form#comment-form input#submit-btn{
-        cursor: pointer;
-        color: var(--main-pink);
-        box-shadow: 0 5px 5px 0 var(--shadow);
-    }
-    form#comment-form input#submit-btn:active{
-        box-shadow: 1px 1px 1px 0 var(--shadow);
-        transform: translateY(4px);
-    }
-
-    form#comment-form input.error{
-        border: 1px solid rgb(219, 26, 26);
-    }
-
-    .error{
-        display: block;
-        font-size: small;
-        color: rgb(219, 26, 26);
-        margin-bottom: 5px;
-        margin-left: 5px;
-
     }
 
 /* FIN Comentarios */

@@ -7,16 +7,27 @@
         <span>MiMimiMundo</span>
     </div>
 </div>
+
 <nav class="navbar">
     <ul>
         <li>
             <a href="index.php">Home</a>
         </li>
-        <li>
-            <a href="producto.php?prod=1">Producto</a>
-        </li>
-        <li>
-            <a href="producto.php?prod=1&print">Imprimir</a>
-        </li>
+        {% if not user %}     
+            <li>
+                <a href="login.php">Login</a>
+            </li>
+            <li>
+                <a href="register.php">Register</a>
+            </li> 
+        {% else %}
+            <li>
+                <a href="logout.php">Logout</a>
+            </li> 
+            <li>
+                <a href="perfil.php">Perfil</a>
+            </li>  
+        {% endif %}
+        
     </ul>
 </nav>
