@@ -75,9 +75,12 @@ function submitForm(){
     if(checkFields()){
         //Añadir comentario Texto a lista comentarios
         checkBadWords(comentarioTexto);
-        addComment(form.elements["nombre"], form.elements["texto-comment"]);
-        clearInput(form.elements["nombre"]);
-        clearInput(form.elements["email"]);
+
+        sendComment(form.elements["texto-comment"].value, formatDate(new Date()));
+        author = document.getElementById("username").innerHTML;
+        addComment(author, form.elements["texto-comment"]);
+        // clearInput(form.elements["nombre"]);
+        // clearInput(form.elements["email"]);
         clearInput(form.elements["texto-comment"]);
     }
 
@@ -115,7 +118,7 @@ function addComment(author, texto){
     var newcomment = createLi("comment");
     var date = formatDate(new Date());
     newcomment.append(createSpan(date, "date"));
-    newcomment.append(createSpan(author.value + ": ", "author"));
+    newcomment.append(createSpan(author + ": ", "author"));
     newcomment.append(createSpan(texto.value, "texto"));
     listComments.prepend(newcomment);
 
@@ -123,33 +126,33 @@ function addComment(author, texto){
 
 //Comprueba que los campos del promulario sean correctos
 function checkFields(){
-    var name = document.getElementById("nombre");
-    var email = document.getElementById("email");
+    // var name = document.getElementById("nombre");
+    // var email = document.getElementById("email");
     var texto = document.getElementById("texto-comment");
     var correct = true;
 
     //Compruebo que todos los campos estén llenos
-    if(isEmpty(name.value)){
-        document.getElementById("error-nombre").innerText="Debe rellenar el campo Nombre.";
-        correct = false;
-        name.classList.add("error");
-    } else {
-        document.getElementById("error-nombre").innerText = "";
-        name.classList.remove("error");
-    }
+    // if(isEmpty(name.value)){
+    //     document.getElementById("error-nombre").innerText="Debe rellenar el campo Nombre.";
+    //     correct = false;
+    //     name.classList.add("error");
+    // } else {
+    //     document.getElementById("error-nombre").innerText = "";
+    //     name.classList.remove("error");
+    // }
 
-    if(isEmpty(email.value)){
-        document.getElementById("error-email").innerText="Debe rellenar el campo Email.";
-        correct = false;
-        email.classList.add("error");
-    } else if(!isValidEmail(email.value)){
-        document.getElementById("error-email").innerText="Email no válido.";
-        correct = false;
-        email.classList.add("error");
-    } else {
-        document.getElementById("error-email").innerText = "";
-        email.classList.remove("error");
-    }
+    // if(isEmpty(email.value)){
+    //     document.getElementById("error-email").innerText="Debe rellenar el campo Email.";
+    //     correct = false;
+    //     email.classList.add("error");
+    // } else if(!isValidEmail(email.value)){
+    //     document.getElementById("error-email").innerText="Email no válido.";
+    //     correct = false;
+    //     email.classList.add("error");
+    // } else {
+    //     document.getElementById("error-email").innerText = "";
+    //     email.classList.remove("error");
+    // }
     
     
     if(isEmpty(texto.value)){
@@ -179,5 +182,20 @@ function isValidEmail(email){
     return exprRegular.test(email);
 }
 
+function sendComment(texto, fecha){
+    var newComment = [texto, fecha];
+
+    var comment = JSON.stringify(newComment);
+
+    var ajax = new XMLHttpRequest();
+
+
+   var producto = document.URL.split("?")[1];
+   var url = "addComment.php?" + producto;
+
+    ajax.open("POST", url, true);
+    ajax.setRequestHeader("Content-type", "application/json")
+    ajax.send(comment);
+}
 
 

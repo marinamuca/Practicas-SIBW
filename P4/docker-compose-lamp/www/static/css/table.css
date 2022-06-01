@@ -17,15 +17,50 @@
     background-color: var(--lighter-pink);
     margin-bottom: 5px;
 
-    display: block;   
+    display: flex;
+    justify-content: space-between;
 }
 
 .element .info{
-    width: 25%;
+    width: auto;
     border-radius: 5px;
     padding: 2px 5px;
     background-color: white;
     color: var(--dark-pink);
-    margin: 5px;
-    
+    margin: 5px;  
+}
+
+.element div{
+    min-width: fit-content;
+    width: 30%;
+    max-width: 30%;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+}
+
+
+.element .fa-solid{
+    display: block;
+    float: right;
+}
+
+.space {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media only screen and (max-width: 750px) {
+    .table-container{
+        width: 100%;
+    }
+    .element{
+        display: block;
+    }
+    .element div{
+        margin: 10px 0;
+        max-width: 100%;
+        min-width: 100%;
+    }
 }

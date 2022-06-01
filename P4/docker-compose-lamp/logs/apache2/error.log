@@ -172,3 +172,44 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
 [Wed Jun 01 13:54:07.467044 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
 [Wed Jun 01 13:54:07.467809 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.5. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 15:16:25.080225 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 15:16:25.081622 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.5. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 15:16:50.041177 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 15:16:50.042084 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.5. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 15:18:10.070490 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 15:18:10.071252 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.5. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 15:20:51.086981 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 15:20:51.091342 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.3. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 15:35:39.242209 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 15:35:39.246698 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.5. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 15:37:48.988098 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 15:37:48.989213 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.5. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 15:39:00.636637 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 15:39:00.637426 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.3. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 15:43:33.569975 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 15:43:33.572420 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Wed Jun 01 16:09:04.716349 2022] [php7:error] [pid 19] [client 172.21.0.1:63908] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:09:51.261640 2022] [php7:error] [pid 30] [client 172.21.0.1:63968] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:10:15.814176 2022] [php7:error] [pid 17] [client 172.21.0.1:64016] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:10:20.266199 2022] [php7:error] [pid 17] [client 172.21.0.1:64016] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:10:53.054434 2022] [php7:error] [pid 19] [client 172.21.0.1:64088] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:11:11.692365 2022] [php7:error] [pid 26] [client 172.21.0.1:64096] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:11:12.698742 2022] [php7:error] [pid 26] [client 172.21.0.1:64096] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:11:12.991729 2022] [php7:error] [pid 26] [client 172.21.0.1:64096] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:11:13.214174 2022] [php7:error] [pid 26] [client 172.21.0.1:64096] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:11:13.438941 2022] [php7:error] [pid 26] [client 172.21.0.1:64096] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:12:41.855133 2022] [php7:error] [pid 25] [client 172.21.0.1:64104] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:12:42.629744 2022] [php7:error] [pid 25] [client 172.21.0.1:64104] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:12:42.857489 2022] [php7:error] [pid 25] [client 172.21.0.1:64104] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+[Wed Jun 01 16:12:45.413114 2022] [php7:error] [pid 25] [client 172.21.0.1:64104] script '/var/www/html/add_comment.php' not found or unable to stat, referer: http://localhost/producto.php?prod=1
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.3. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 01 18:54:06.087254 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.4.2 configured -- resuming normal operations
+[Wed Jun 01 18:54:06.088255 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'

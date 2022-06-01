@@ -91,8 +91,7 @@
     }
 
     function getComments($mysqli, $codProd){
-        $result = queryDB($mysqli, 'cod_comment, texto, autor, fecha', 'Comentarios_producto', 'COD_PROD', $codProd, 'ORDER BY FECHA DESC ');
-
+        $result = queryDB($mysqli, 'cod_com, texto, username, fecha', 'Comentarios', 'COD_PROD', $codProd, 'ORDER BY FECHA DESC ');
        
         $comments = [];
         
@@ -101,8 +100,7 @@
             
             $rows = resultToArray($result);
             foreach ($rows as $key => $row) {
-                $comments[$key] = ['id' => $row['cod_comment'], 'texto' => $row['texto'], 'autor' => $row['autor'], 'fecha' => $row['fecha']];
-                
+                $comments[$key] = ['id' => $row['cod_com'], 'texto' => $row['texto'], 'username' => $row['username'], 'fecha' => $row['fecha']];
             }
         } 
 
@@ -162,6 +160,19 @@
         }
         
         $sentencia->bind_param("ss", $val_columna, $val_otra_columna);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+
+        $sentencia->close();
+    }
+
+    function insertarComentario($mysqli, $fecha, $texto, $username, $codProd){
+        if(!$sentencia = $mysqli->prepare("INSERT INTO Comentarios(COD_COM, Fecha, texto, username, cod_prod) VALUES (NULL, ?, ?, ?, ?)")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        $sentencia->bind_param("sssi", $fecha, $texto, $username, $codProd);
 
         if (!$sentencia->execute()) {
             echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
