@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Usuarios{% endblock title %}
+{% block main_content %}
+<div class="table-container">
+    <ul>
+        {% for usuario in usuarios %}
+            <li class="element">
+                <span> Nombre: </span>
+                <span class="info">{{ usuario.username }}</span>
+                <span> Email: </span>
+                <span class="info">{{ usuario.email }}</span>
+                <span> Rol: </span>
+                <span class="info">{{ usuario.rol }}</span>
+                <span ><i class="fa-solid fa-pen-to-square"></i></span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock  main_content %}

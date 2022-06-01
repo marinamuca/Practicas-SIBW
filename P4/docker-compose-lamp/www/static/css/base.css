@@ -1,6 +1,7 @@
 @import url("portada.css");
 @import url("producto.css");
 @import url("forms.css");
+@import url("table.css");
 
 /* Estilos de los elementos comunes a todas las paginas */
 
@@ -168,7 +169,7 @@ header{
     display: flex;
     float: left;
     width: 80%;
-    height: 100%;
+
     max-height: 100%;
     overflow: auto;
     flex-wrap: wrap; /* Para que se pongan las fotos de los productos unas debajo de otras */

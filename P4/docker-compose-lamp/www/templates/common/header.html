@@ -20,13 +20,29 @@
             <li>
                 <a href="register.php">Register</a>
             </li> 
+           
         {% else %}
-            <li>
-                <a href="logout.php">Logout</a>
-            </li> 
+            {% if user.rol == "GEST" or user.rol == "SU"%}
+                <li>
+                    <a href="addProducto.php">Añadir Producto</a>
+                </li> 
+            {% endif %}
+            {% if user.rol == "MOD" or user.rol == "SU"%}
+                <li>
+                    <a href="allComments.php">Ver comentarios</a>
+                </li> 
+            {% endif %}
+            {% if user.rol == "SU"%}
+                <li>
+                    <a href="allUsers.php">Usuarios</a>
+                </li> 
+            {% endif %}
             <li>
                 <a href="perfil.php">Perfil</a>
             </li>  
+            <li>
+                <a href="logout.php">Logout</a>
+            </li> 
         {% endif %}
         
     </ul>

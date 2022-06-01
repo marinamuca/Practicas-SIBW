@@ -21,8 +21,8 @@
         return $result;
     }
 
-    function queryALL($mysqli, $fields, $table){
-        $result = $mysqli->query("SELECT $fields FROM $table");
+    function queryALL($mysqli, $fields, $table, $order = ""){
+        $result = $mysqli->query("SELECT $fields FROM $table ORDER BY $order");
         return $result;
     }
 
@@ -122,8 +122,7 @@
     }
     
     function getUsers($mysqli){
-        $result = queryALL($mysqli, 'username, password, email, COD_ROL','usuarios');
-
+        $result = queryALL($mysqli, 'username, password, email, COD_ROL','usuarios', 'Usuarios.COD_ROL DESC');
         $rows = resultToArray($result);
 
         foreach ($rows as $key => $row) {
