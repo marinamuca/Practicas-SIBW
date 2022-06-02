@@ -4,16 +4,20 @@ var comentarioTexto;
 var badWords = [];
 
 function initialize() {
-    document.getElementById("comment-btn").addEventListener("click", showComments);
-    document.getElementById("submit-btn").addEventListener("click", submitForm);
     comentarioTexto = document.getElementById("texto-comment");
     comentarioTexto.addEventListener("keypress", detectarPalabras);
     getBadWords();
+    document.getElementById("comment-btn").addEventListener("click", showComments);
+    document.getElementById("tag-btn").addEventListener("click", showTags);
+    document.getElementById("submit-btn").addEventListener("click", submitForm);
 };
 
 // Muestra el panel de comentarios
 function showComments() {
     document.getElementById("comments").classList.toggle("panel-comment-show");
+}
+function showTags() {
+    document.getElementById("tags").classList.toggle("panel-tag-show");
 }
 
 // Detecta cada vez que se termina de escribir una palabra

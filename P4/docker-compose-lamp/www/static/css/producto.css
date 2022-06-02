@@ -31,10 +31,10 @@ h2.subtitle-product{
         margin-top: 0;          
     }
 
-    button#print-btn{
+    .right-btn{
         float: right;
     }
-    button#print-btn a{
+    button a{
         text-decoration: none;
     }
 
@@ -49,51 +49,8 @@ h2.subtitle-product{
         transform: translateY(4px);
     }
 
-    .fa-comment, .fa-print{
+    .fa-solid, .fa-print{
         font-size: 20px;
-    }
-
-    .comment-container{
-        display: flex;
-        width: 100%;
-        justify-content: right;
-        flex-wrap: wrap;
-    }
-
-    .panel-comment{
-        display: none;
-        margin-left: 50px;
-        margin-right: 20px;
-
-    }
-
-    .panel-comment-show{
-        display: block;
-        width: 100%;
-        position: relative;
-        float: right;
-        background-color: var(--lighter-pink);
-        border-radius: 10px;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-
-    .panel-comment .date, .panel-comment .author{
-        display: inline;
-        margin-bottom: 5px;
-    }
-
-    .panel-comment .texto{
-        border-radius: 5px;
-        display: block;
-        background-color: white;
-        padding: 5px;
-        color: var(--dark-pink);
-    }
-
-    .comment{
-        width: 100%;
-        padding-bottom: 10px;
     }
 
 /* FIN Comentarios */
@@ -148,6 +105,41 @@ figure {
 
 figcaption {
     text-align: center;
+    margin-bottom: 10px;
+}
+
+/* ETIQUETAS */
+.tag-container{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+}
+
+.tag{
+    border-radius: 5px;
+    display: block;
+    background-color: white;
+    padding: 5px;
+    color: var(--dark-pink);
+}
+
+.panel-tag{
+    display: none;
+    margin-left: 50px;
+    margin-right: 20px;
+
+}
+
+.panel-tag-show{
+    display: block;
+    width: 100%;
+    position: relative;
+    float: right;
+    background-color: var(--lighter-pink);
+    border-radius: 10px;
+    padding: 10px;
     margin-bottom: 10px;
 }
 

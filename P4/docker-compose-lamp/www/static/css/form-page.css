@@ -1,0 +1,46 @@
+
+
+h2{
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+aside{
+    display: none;
+}
+
+footer{
+    display: none;
+    background-color: white;
+    border-width: 5px;
+}
+
+.main-container{
+    background-image: url(../image/Fondo.png);
+    background-size: cover;
+    /* background-position: center; */
+
+    width: 100%;
+    height: calc(100vh - 171px); /* 120 header 55 footer */
+    margin:0;
+    justify-content: right;
+   
+}
+
+.form-container{
+    float: right;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.form-wrapper{
+    width: 70%;
+    background-color: var(--lighter-pink-shadow);
+    padding:  20px;
+    padding-top: 0;
+    border-radius: 10px;
+    margin: auto;
+}

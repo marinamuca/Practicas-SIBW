@@ -1,6 +1,6 @@
 <?php
     require_once "/usr/local/lib/php/vendor/autoload.php";
-    include("checkAuth.php");
+    include("checkForm.php");
     include("bd.php");
 
     $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -20,7 +20,7 @@
 
         $error = [];
 
-        $errormsgs = checkEdit($mysqli, $username, $email, $password_actual, $password_nueva, $password_conf, $user);
+        $errormsgs = checkEditProfile($mysqli, $username, $email, $password_actual, $password_nueva, $password_conf, $user);
         
         if($errormsgs['username'] != ""){
             $error['username'] = "error";

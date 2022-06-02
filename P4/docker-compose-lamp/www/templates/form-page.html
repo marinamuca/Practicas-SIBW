@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="static/css/form-page.css">
+{% endblock head %}
+
+{% block main_content %}
+<div class="form-container">
+    <div class="form-wrapper">
+        {% block auth_form %}
+        {% endblock auth_form %}
+    </div>
+</div>
+
+{% endblock  main_content %}

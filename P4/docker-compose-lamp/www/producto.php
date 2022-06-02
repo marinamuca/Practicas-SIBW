@@ -5,7 +5,6 @@
 
     $loader = new \Twig\Loader\FilesystemLoader('templates');
     $twig = new \Twig\Environment($loader);
-    $twig->addGlobal('session', $_SESSION);
 
 
     if(isset($_GET['prod'])){
@@ -17,7 +16,8 @@
     $msqli = dbConnect();
     $infoProduct = getProducto($msqli, $codProd);
     $imagenes = getImagenesProducto($msqli, $codProd);
-    $comments = getComments($msqli, $codProd);
+    $comments = getCommentsFromProduct($msqli, $codProd);
+    $tags = getTagsFromProduct($msqli, $codProd);
 
     if(isset($_SESSION['username']))
         $user = getUser($msqli, 'username', $_SESSION['username']);
@@ -26,7 +26,7 @@
         echo $twig->render('producto_imprimir.html', ['producto' => $infoProduct, 'imagenes' => $imagenes, 'user' => $user]);
     }
     else{
-        echo $twig->render('producto.html', ['producto' => $infoProduct, 'imagenes' => $imagenes, 'comments' =>  $comments, 'user' => $user]);
+        echo $twig->render('producto.html', ['producto' => $infoProduct, 'imagenes' => $imagenes, 'comments' =>  $comments, 'tags' =>  $tags, 'user' => $user]);
     }
 
 ?>

@@ -14,13 +14,33 @@ input{
 
 input:focus{
     outline-color: var(--main-pink);
-    background-color: white;
+    /* background-color: white; */
 }
 
 input[type=button], input[type=submit]{
     cursor: pointer;
     color: var(--main-pink);
     box-shadow: 0 5px 5px 0 var(--shadow);
+}
+
+input[type=file]{
+    background-color: transparent;
+    padding: 0;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    border: 1.5px  solid transparent;
+    padding: 3.5px;;
+    font-family: brandon-grot-w01-light, Oswald, sans-serif;
+    color: grey;
+    font-weight: lighter;
+    border-radius: 5px;
+    background-color: white;
+}
+
+input[type=file]::-webkit-file-upload-button:hover{
+    border: 1.5px solid var(--main-pink);
+    cursor: pointer;
 }
 
 input[type=button]:active, input[type=submit]:active{

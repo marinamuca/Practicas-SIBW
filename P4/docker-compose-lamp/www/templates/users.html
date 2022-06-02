@@ -5,24 +5,29 @@
     <ul>
         {% for usuario in usuarios %}
             <li class="element">
-                <div>
+                <div class="wrap-info">
                     <span> Nombre: </span>
                     <span class="info">{{ usuario.username }}</span>
                 </div>
-                <div>
+                <div class="wrap-info">
                     <span> Email: </span>
                     <span class="info">{{ usuario.email }}</span>
                 </div>
                 <div class="space">
-                    <div>
+                    <div class="wrap-info">
                         <span> Rol: </span>
                         <span class="info">{{ usuario.rol }}</span>
-                    </div>
-                    <div>
-                        <span class="icon"><i class="fa-solid fa-pen-to-square"></i></span>
-                    </div>
-                </div>   
-               
+                        <div class="dropdown">
+                            <span class="dropbtn"><i class="fa-solid fa-pen-to-square"></i></span>
+                            <div class="dropdown-content">
+                                <span>Nuevo Rol</span>
+                                {% for rol in roles %}          
+                                    <a href="editUser.php?username={{ usuario.username }}&nuevoRol={{ rol.codigo }}">{{ rol.nombre }}</a>
+                                {% endfor %}    
+                            </div>
+                        </div>
+                    </div>     
+                </div>         
             </li>
         {% endfor %}
     </ul>

@@ -4,7 +4,7 @@
 
         $sentencia = $mysqli->prepare("SELECT $fields FROM $table WHERE $id = ? $order");
 
-        if($table == "usuarios"){
+        if($table == "usuarios" || $id == "nombre"){
             $sentencia->bind_param("s", $codigo );
         }
         else{
@@ -22,7 +22,8 @@
     }
 
     function queryALL($mysqli, $fields, $table, $order = ""){
-        $result = $mysqli->query("SELECT $fields FROM $table ORDER BY $order");
+        
+        $result = $mysqli->query("SELECT $fields FROM $table $order");
         return $result;
     }
 
@@ -90,8 +91,8 @@
         return $productos;
     }
 
-    function getComments($mysqli, $codProd){
-        $result = queryDB($mysqli, 'cod_com, texto, username, fecha', 'Comentarios', 'COD_PROD', $codProd, 'ORDER BY FECHA DESC ');
+    function getCommentsFromProduct($mysqli, $codProd){
+        $result = queryDB($mysqli, 'cod_com, texto, username, fecha, editado', 'Comentarios', 'COD_PROD', $codProd, 'ORDER BY FECHA DESC ');
        
         $comments = [];
         
@@ -100,7 +101,7 @@
             
             $rows = resultToArray($result);
             foreach ($rows as $key => $row) {
-                $comments[$key] = ['id' => $row['cod_com'], 'texto' => $row['texto'], 'username' => $row['username'], 'fecha' => $row['fecha']];
+                $comments[$key] = ['id' => $row['cod_com'], 'texto' => $row['texto'], 'username' => $row['username'], 'editado' => $row['editado'], 'fecha' => $row['fecha']];
             }
         } 
 
@@ -119,8 +120,18 @@
         return $badWordsJSON;
     }
     
+    function getRoles($mysqli){
+        $result = queryALL($mysqli, 'COD_ROL, nombre','Roles');
+        $rows = resultToArray($result);
+
+        foreach ($rows as $key => $row) {
+            $roles[$key] = ['codigo' => $row['COD_ROL'], 'nombre' => $row['nombre']];
+        }
+        return $roles;
+    }
+
     function getUsers($mysqli){
-        $result = queryALL($mysqli, 'username, password, email, COD_ROL','usuarios', 'Usuarios.COD_ROL DESC');
+        $result = queryALL($mysqli, 'username, password, email, COD_ROL','usuarios', ' ORDER BY Usuarios.COD_ROL DESC');
         $rows = resultToArray($result);
 
         foreach ($rows as $key => $row) {
@@ -149,7 +160,8 @@
 
         if (!$sentencia->execute()) {
             echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
-        }
+        } 
+
 
         $sentencia->close();
     }
@@ -179,5 +191,160 @@
         }
 
         $sentencia->close();
+    }
+
+    function updateComentario($mysqli, $texto, $cod_comm){
+        if(!$sentencia = $mysqli->prepare("UPDATE Comentarios set texto = ?, editado = 1 where cod_com = ?")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        $sentencia->bind_param("si", $texto, $cod_comm);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        } 
+
+        $sentencia->close();
+    }
+
+    function deleteComentario($mysqli, $cod_comm){
+        if(!$sentencia = $mysqli->prepare("DELETE FROM `Comentarios` WHERE `Comentarios`.`COD_COM` = ?")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        $sentencia->bind_param("i", $cod_comm);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+
+        $sentencia->close();
+    }
+
+
+    function deleteProducto($mysqli, $codProd){
+        if(!$sentencia = $mysqli->prepare("DELETE FROM `Producto` WHERE `Producto`.`COD_PROD` = ?")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        $sentencia->bind_param("i", $codProd);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+
+        $sentencia->close();
+    }
+
+    function numSuperUsers($mysqli){
+        $res = queryDB($mysqli, 'username, password, email, COD_ROL', 'usuarios', 'COD_ROL', 'SU', '');
+        return $res->num_rows;
+    }
+
+    function getAllComments($mysqli){
+        $result = queryALL($mysqli, 'COD_COM, fecha, texto, username, cod_prod, editado','Comentarios');
+        $rows = resultToArray($result);
+
+        foreach ($rows as $key => $row) {
+            $usuarios[$key] = ['username' => $row['username'], 'id' => $row['COD_COM'], 'fecha' => $row['fecha'], 'texto' => $row['texto'], 'editado' => $row['editado'], 'producto' => $row['cod_prod']];
+        }
+        return $usuarios;
+    }
+
+    function getComentario($mysqli, $cod_comm){
+        $res = queryDB($mysqli, 'texto', 'Comentarios', 'cod_com', $cod_comm, '');
+
+        if($res->num_rows > 0){
+            $row = $res-> fetch_assoc();
+            $comentario = array('texto' => $row['texto']);
+        }
+
+        return $comentario;
+    }
+
+    function getIDProductByName($mysqli, $name){
+        $res = queryDB($mysqli, 'COD_PROD', 'Producto', 'nombre', $name, '');
+
+        $id = -1;
+        if($res->num_rows > 0){
+            $row = $res-> fetch_assoc();
+            $id = $row['COD_PROD'];
+        } 
+
+        return $id;
+    }
+
+    function insertarProducto($mysqli, $nombre, $precio, $tamano, $papel, $descripcion){
+        if(!$sentencia = $mysqli->prepare("INSERT INTO Producto(COD_PROD, nombre, precio, tamano, tipo_papel, descripcion) VALUES (NULL, ?, ?, ?, ?, ?)")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        $sentencia->bind_param("sisss", $nombre, $precio, $tamano, $papel, $descripcion);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+
+        $id= getIDProductByName($mysqli, $nombre);
+        
+        $sentencia->close();
+
+
+        return $id;
+    }
+
+    function insertarImagen($mysqli, $codProd, $nombre, $caption){
+        if(!$sentencia = $mysqli->prepare("INSERT INTO Imagen_Producto(COD_PROD, COD_IMG, ruta, caption) VALUES (?, NULL, ?, ?)")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        $sentencia->bind_param("iss", $codProd, $nombre, $caption);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+
+        $sentencia->close();
+  
+    }
+
+    function updateProducto($mysqli, $field, $value, $type, $codProd){
+        if(!$sentencia = $mysqli->prepare("UPDATE Producto set $field = ? where cod_prod = ?")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        $sentencia->bind_param($type."i", $value, $codProd);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        } 
+
+        $sentencia->close();
+    }
+
+    function addTag($mysqli, $codProd, $texto){
+        if(!$sentencia = $mysqli->prepare("INSERT INTO Etiquetas(COD_PROD, etiqueta, COD_TAG) VALUES (?, ?, NULL)")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        $sentencia->bind_param("is", $codProd, $texto);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+        
+        $sentencia->close();
+
+
+    }
+
+    function getTagsFromProduct($mysqli, $codProd){
+        $result = queryDB($mysqli, 'COD_TAG, etiqueta', 'Etiquetas', 'COD_PROD', $codProd, ' ');
+       
+        $tags = [];
+        
+        // echo "<script>console.log('Debug Objects: " . $result->num_rows . "' );</script>";
+        if($result->num_rows > 0){
+            
+            $rows = resultToArray($result);
+            foreach ($rows as $key => $row) {
+                $tags[$key] = ['id' => $row['COD_TAG'], 'tag' => $row['etiqueta']];
+            }
+        } 
+
+        return $tags;
     }
 ?>

@@ -12,7 +12,8 @@
 
     $users = getUsers($mysqli);
     $user = getUser($mysqli, 'username', $_SESSION['username']);
+    $roles = getRoles($mysqli);
 
     if($user['rol'] == "SU")
-        echo $twig->render('users.html', ['user' => $user, 'usuarios' => $users ])
+        echo $twig->render('users.html', ['user' => $user, 'usuarios' => $users, 'roles' => $roles ])
 ?>

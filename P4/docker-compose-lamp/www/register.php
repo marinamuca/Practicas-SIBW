@@ -1,6 +1,6 @@
 <?php
     require_once "/usr/local/lib/php/vendor/autoload.php";
-    include("checkAuth.php");
+    include("checkForm.php");
     include("bd.php");
 
     $loader = new \Twig\Loader\FilesystemLoader('templates');

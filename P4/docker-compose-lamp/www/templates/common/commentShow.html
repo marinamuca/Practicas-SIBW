@@ -1,0 +1,34 @@
+<ul class="comment-container" id="comment-list">
+    {% for row in comments %}
+        <li class="comment">
+            <span class="date">{{ row['fecha'] }}</span>
+            <span class="author">{{ row['username'] }}:</span>
+            <div>
+                <span class="texto">{{ row['texto'] }}</span>
+                {% if row['editado'] %}   
+                    <span class="edit-msg">Mensaje editado por un moderador.</span>
+                {% endif %}
+
+                {% if user.rol == "MOD" or user.rol=="SU" %}
+                    <div class="botones-moderador">
+                        <!--Abrir Comentarios-->
+                        <button id="edit-comment">
+                            <a href="editComment.php?comment={{ row['id'] }}">
+                                <span>Editar Comentario</span>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </button>
+                    
+                        {# Ver pagina imprimir producto #}
+                        <button id="delete-comment" class="right-btn">
+                            <a href="deleteComment.php?comment={{ row['id'] }}">
+                                <span>Eliminar</span>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </li>
+    {% endfor %}   
+</ul>
