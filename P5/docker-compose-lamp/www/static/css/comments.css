@@ -1,0 +1,87 @@
+.comment-container{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    flex-wrap: wrap;
+}
+
+.panel-comment{
+    display: none;
+    margin-left: 50px;
+    margin-right: 20px;
+
+}
+
+.panel-comment-show{
+    display: block;
+    width: 100%;
+    position: relative;
+    float: right;
+    background-color: var(--lighter-pink);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.panel-comment .date, .panel-comment .author{
+    display: inline;
+    margin-bottom: 5px;
+}
+
+.panel-comment .texto{
+    border-radius: 5px;
+    display: block;
+    background-color: white;
+    padding: 5px;
+    color: var(--dark-pink);
+}
+
+.comment{
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+/* BOTONES  */
+
+.botones-moderador{
+    width: 100%;
+}
+.botones-moderador button{
+    background-color: white;
+    /* border: 1px solid var(--main-pink); */
+    box-shadow: 5px 5px 5px 0 var(--shadow);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    margin-left: 0; 
+    /* margin-top: 0;  */        
+}
+
+button a{
+    text-decoration: none;
+}
+
+.botones-moderador button span{
+    font-size: 15px;
+    margin-right: 5px;
+}
+
+.botones-moderador button:active{
+    background-color: white;
+    box-shadow: 1px 1px 1px 0 var(--shadow);
+    transform: translateY(4px);
+}
+
+.botones-moderador .fa-solid{
+    font-size: 15px;
+}
+
+.edit-comment{
+    display: none;
+}
+
+.edit-comment-show{
+    display: block;
+}
+

@@ -1,0 +1,38 @@
+{% extends "form-page.html" %}
+{% block auth_form %}
+    <h2>{% block title_form %}{% endblock title_form %}</h2>
+    <form name="{% block name_form %}{% endblock name_form %}" action="{% block action_form %}{% endblock action_form %}" method="post" enctype="multipart/form-data">
+        <div class="form-field">
+            <input type="text" placeholder="Nombre del producto" name="nombre" class="{{ error.nombre }}">
+            <span class="error">{{ errorMsgs.nombre }}</span>
+        </div>
+        <div class="form-field">
+            <input type="file" name="img" class="{{ error.img }}">
+            <span class="error">{{ errorMsgs.img }}</span>
+        </div>
+        <div class="form-field">
+            <input type="text" placeholder="Pie de foto" name="caption" class="{{ error.caption }}">
+            <span class="error">{{ errorMsgs.caption }}</span>
+        </div>
+        <div class="form-field">
+            <input type="text" placeholder="Precio" name="precio" class="{{ error.precio }}">
+            <span class="error">{{ errorMsgs.precio }}</span>
+        </div>
+        <div class="form-field">
+            <input type="text" placeholder="Tamaño ilustración" name="tamano" class="{{ error.tamano }}">
+            <span class="error">{{ errorMsgs.tamano }}</span>
+        </div>
+        <div class="form-field">
+            <input type="text" placeholder="Tipo de papel" name="papel" class="{{ error.papel }}">
+            <span class="error">{{ errorMsgs.papel }}</span>
+        </div>
+        <div class="form-field">
+            <input type="textaera" placeholder="Descripcion del producto" name="descripcion" class="{{ error.descripcion }}">
+            <span class="error">{{ errorMsgs.descripcion }}</span>
+        </div>
+       
+        <div class="form-field">
+            <input type="submit" value="Añadir" id="submit-btn">
+        </div>
+    </form>
+{% endblock auth_form %}

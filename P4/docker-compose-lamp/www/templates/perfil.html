@@ -1,0 +1,31 @@
+{% extends "form-page.html" %}
+{% block title %}Editar Perfil{% endblock title %}
+{% block auth_form %}
+    <h2>Editar perfil</h2>
+    <form id="register-form"  action="perfil.php" method="post">
+        <div class="form-field">
+            <input type="text" placeholder="{{ user.username }}" name="username" class="{{ error.username }}">
+            <span class="error">{{ errorMsgs.username }}</span>
+        </div>
+        <div class="form-field">
+            <input type="text" placeholder="{{ user.email }}" name="email" class="{{ error.email }}" value="{{ email }}">
+            <span class="error">{{ errorMsgs.email }}</span>
+        </div>
+        <div class="form-field">
+            <input type="password" placeholder="Contraseña actual" name="password-actual">
+            <span class="error">{{ errorMsgs.password_actual }}</span>
+        </div>
+        <div class="form-field">
+            <input type="password" placeholder="Contraseña nueva" name="password-nueva">
+            <span class="error">{{ errorMsgs.password_nueva }}</span>
+        </div>
+        <div class="form-field">
+            <input type="password" placeholder="Confirmar nueva contraseña" name="password-confirm">
+            <span class="error">{{ errorMsgs.password_conf }}</span>
+        </div>
+        <div class="form-field">
+            <input type="submit" value="Enviar" id="submit-btn">
+        </div>
+    
+    </form>
+{% endblock auth_form %}

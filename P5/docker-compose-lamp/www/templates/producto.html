@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block title %}{{ producto['nombre'] }}{% endblock title %}
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="static/css/carrusel.css">
+{% endblock head %}
+{% block main_content %}
+    {% block product_info %}
+         <!--Imagenes del producto-->
+         <div class="product-images"> {# Slideshow container #}   
+            {% if imagenes|length > 1 %}      
+                <i id="prev" class="fa-solid fa-arrow-left-long prev"></i>
+            {% endif %}
+            {% for row in imagenes %}
+                <figure class="slide">
+                    <div class="container-img fade" >
+                        <img src="static/image/{{ row['imagen'] }}" alt="{{ row['caption'] }}" />
+                    </div>
+                    <figcaption class="fade text">{{ row['caption'] }}</figcaption>
+                </figure>
+            {% endfor %} 
+            
+            {% if imagenes|length > 1 %}      
+                <i id="next" class="fa-solid fa-arrow-right-long next"></i>
+            {% endif %}
+         </div>
+
+        <article class="product-text">
+            <!--Nombre del producto-->
+            <h1 class="title-product">{{ producto['nombre'] }}</h1>
+
+
+           
+            <!-- Subtitulo -->
+            <h2 class="subtitle-product"> 
+                <ul>
+                    <li>{{ producto['tamano'] }}</li>
+                    <li>{{ producto['papel'] }}</li>
+                </ul>
+            </h2>
+        
+        
+            <!--Precio-->
+            <h3 class="price">Precio: {{ producto['precio'] }}€</h3>
+            
+            
+            <!-- Descripción -->
+            <p class="descripcion-producto">
+                {{ producto['descripcion'] | nl2br }}
+            </p>
+           
+        
+        </article>
+        
+       
+    {% endblock product_info %}   
+    {% block comments %}
+
+    <div class="botones">
+       
+    </div>
+    <div class="botones">
+        <!--Abrir Comentarios-->
+        <button id="comment-btn">
+            <span>Comentarios</span>
+            <i class="fa-solid fa-comment"></i>
+        </button>
+        {# Ver pagina imprimir producto #}
+        <button id="print-btn" class="right-btn">
+            <a href="producto.php?prod={{ producto['id'] }}&print">
+                <span>Imprimir</span>
+                <i class="fa-solid fa-print"></i>
+            </a>
+        </button>
+        {% if user.rol == "GEST" or user.rol == "SU" %}
+        <button id="tag-btn">
+            <span>Añadir Etiqueta</span>
+            <i class="fa-solid fa-tag"></i>
+        </button>
+        <button id="delete-prod" class="right-btn">
+            <a href="deleteProduct.php?prod={{  producto['id'] }}">
+                <span>Eliminar</span>
+                <i class="fa-solid fa-trash-can"></i>
+            </a>
+        </button>
+            <button id="edit-prod" class="right-btn">
+                <a href="editProduct.php?prod={{ producto['id'] }}">
+                    <span>Editar Producto</span>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+            </button>
+        
+           
+        {% endif %}
+    </div>
+
+    <!-- Caja de Etiquetas -->
+    <div id="tags" class="panel-tag">
+        <ul class="tags-container"></ul>
+            {% for tag in tags %}
+            <li class="tag">
+                <span class="texto">{{ tag['tag'] }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% if user.rol == "GEST" or user.rol=="SU" %}
+            <span>Añade una etiqueta:</span>
+            <form id="tag-form" name="addTag" action="addTag.php?prod={{ producto['id'] }}" method="post">
+                <div class="form-field">
+                    <input type="text" placeholder="Etiqueta" id="texto-tag" name="tag">
+                    <span id="error-tag" class="error"></span>
+                </div>
+                <div class="form-field">
+                    <input type="submit" value="Enviar" id="submit-btn">
+                </div>
+            </form>
+        {% endif %}
+    </div>
+   
+
+    <!-- Caja de comentarios -->
+    <div id="comments" class="panel-comment">
+        {% include "common/commentShow.html" %}
+        {% if user %}
+            <span>Haz tu comentario:</span>
+            <form id="comment-form" name="comentar">
+                <div class="hidden" id="username">{{ user.username }}</div>
+                <div class="form-field">
+                    <input type="text" placeholder="Comentario" id="texto-comment" name="comentario">
+                    <span id="error-comment" class="error"></span>
+                </div>
+                <div class="form-field">
+                    <input type="button" value="Enviar" id="submit-btn">
+                </div>
+            </form>
+        {% else %}
+            <span>Registrate o inicia sesión para poder comentar.</span>
+        {% endif %}
+    </div>
+    {% endblock comments %}
+
+
+{% endblock main_content %}
+{% block scripts %} 
+    <script type="text/javascript" src="static/js/comments.js" ></script>
+    <script type="text/javascript" src="static/js/image.js" ></script>
+{% endblock scripts %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    {% block head %}
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock title %} - MiMimiMundo</title>
+        <link rel="stylesheet" href="static/css/base.css">
+        <script src="https://kit.fontawesome.com/35f230cea2.js" crossorigin="anonymous"></script>
+    {% endblock head %}
+</head>
+<body>
+    <div class="content">
+        <header>
+            {% include "common/header.html" %}
+        </header>
+        <section class="cont-sidebar-main">
+            <!-- Main content (Product info) -->
+            <main class="main-container">
+                {% block main_content %}
+                {% endblock  main_content %}
+            </main>
+            <!--sidebar-->     
+            <aside class="sidebar">
+                {% include "common/sidebar.html" %}
+            </aside>
+        </section>
+        <footer>
+            {% include "common/footer.html" %}
+        </footer>
+    </div>    
+</body>
+{% block scripts %} 
+{% endblock scripts %}
+</html>

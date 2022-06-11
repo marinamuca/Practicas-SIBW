@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Usuarios{% endblock title %}
+{% block main_content %}
+<div class="table-container">
+    <ul>
+        {% for usuario in usuarios %}
+            <li class="element">
+                <div class="wrap-info">
+                    <span> Nombre: </span>
+                    <span class="info">{{ usuario.username }}</span>
+                </div>
+                <div class="wrap-info">
+                    <span> Email: </span>
+                    <span class="info">{{ usuario.email }}</span>
+                </div>
+                <div class="space">
+                    <div class="wrap-info">
+                        <span> Rol: </span>
+                        <span class="info">{{ usuario.rol }}</span>
+                        <div class="dropdown">
+                            <span class="dropbtn"><i class="fa-solid fa-pen-to-square"></i></span>
+                            <div class="dropdown-content">
+                                <span>Nuevo Rol</span>
+                                {% for rol in roles %}          
+                                    <a href="editUser.php?username={{ usuario.username }}&nuevoRol={{ rol.codigo }}">{{ rol.nombre }}</a>
+                                {% endfor %}    
+                            </div>
+                        </div>
+                    </div>     
+                </div>         
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock  main_content %}

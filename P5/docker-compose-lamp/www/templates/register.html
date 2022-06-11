@@ -1,0 +1,27 @@
+{% extends "form-page.html" %}
+{% block title %}Registrate{% endblock title %}
+{% block auth_form %}
+    <h2>Crear cuenta</h2>
+    <form id="register-form"  action="register.php" method="post">
+        <div class="form-field">
+            <input type="text" placeholder="Nombre de Usuario" name="username" class="{{ error.username }}" value="{{ username }}">
+            <span class="error">{{ errorMsgs.username }}</span>
+        </div>
+        <div class="form-field">
+            <input type="text" placeholder="Correo electrónico" name="email" class="{{ error.email }}" value="{{ email }}">
+            <span class="error">{{ errorMsgs.email }}</span>
+        </div>
+        <div class="form-field">
+            <input type="password" placeholder="Contraseña" name="password">
+            <span class="error">{{ errorMsgs.password }}</span>
+        </div>
+        <div class="form-field">
+            <input type="password" placeholder="Confirmar Contraseña" name="password-confirm">
+            <span class="error">{{ errorMsgs.password_conf }}</span>
+        </div>
+        <div class="form-field">
+            <input type="submit" value="Enviar" id="submit-btn">
+        </div>
+    
+    </form>
+{% endblock auth_form %}
