@@ -60,7 +60,7 @@
     }
 
     function getImagenesProducto($mysqli, $codProd){
-        $result = queryDB($mysqli, 'ruta, caption', 'imagen_producto','COD_PROD', $codProd, '');
+        $result = queryDB($mysqli, 'COD_IMG, ruta, caption', 'imagen_producto','COD_PROD', $codProd, '');
         $infoImagen = array();
        
         if($result->num_rows > 0){
@@ -70,7 +70,7 @@
             $images = array();
             $caption = array();
             foreach ($rows as $key => $row) {
-                $infoImagen[$key] = ['imagen' => $row['ruta'], 'caption' => $row['caption']];
+                $infoImagen[$key] = ['imagen' => $row['ruta'], 'caption' => $row['caption'], 'cod' => $row['COD_IMG']];
             }
             
         }
@@ -225,6 +225,19 @@
             echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
         }
         $sentencia->bind_param("i", $codProd);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+
+        $sentencia->close();
+    }
+
+    function deleteImagen($mysqli, $img){
+        if(!$sentencia = $mysqli->prepare("DELETE FROM `Imagen_Producto` WHERE `Imagen_Producto`.`COD_IMG` = ?")){
+            echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        $sentencia->bind_param("i", $img);
 
         if (!$sentencia->execute()) {
             echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;

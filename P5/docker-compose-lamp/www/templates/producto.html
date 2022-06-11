@@ -72,11 +72,11 @@
                 <i class="fa-solid fa-print"></i>
             </a>
         </button>
-        {% if user.rol == "GEST" or user.rol == "SU" %}
         <button id="tag-btn">
-            <span>Añadir Etiqueta</span>
+            <span>Etiquetas</span>
             <i class="fa-solid fa-tag"></i>
         </button>
+        {% if user.rol == "GEST" or user.rol == "SU" %} 
         <button id="delete-prod" class="right-btn">
             <a href="deleteProduct.php?prod={{  producto['id'] }}">
                 <span>Eliminar</span>
@@ -88,9 +88,7 @@
                     <span>Editar Producto</span>
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
-            </button>
-        
-           
+            </button>         
         {% endif %}
     </div>
 

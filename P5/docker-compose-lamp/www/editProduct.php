@@ -12,9 +12,9 @@
 
 
     if(isset($_GET['prod'])){
-        $cod_prod = $_GET['prod'];
+        $codProd = $_GET['prod'];
     } else {
-        $cod_prod = -1;
+        $codProd = -1;
     }
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -53,31 +53,32 @@
 
         if($error == []){
             if(!empty($nombre)){
-                updateProducto($mysqli, 'nombre'  ,$nombre, "s",$cod_prod);
+                updateProducto($mysqli, 'nombre'  ,$nombre, "s",$codProd);
             }
             if(!empty($precio)){
-                updateProducto($mysqli, 'precio', $precio, "i",$cod_prod);
+                updateProducto($mysqli, 'precio', $precio, "i",$codProd);
             }
             if(!empty($tamano)){
-                updateProducto($mysqli, 'tamano'  ,$tamano, "s",$cod_prod);
+                updateProducto($mysqli, 'tamano'  ,$tamano, "s",$codProd);
             }
             if(!empty($papel)){
-                updateProducto($mysqli, 'tipo_papel', $papel, "s",$cod_prod);
+                updateProducto($mysqli, 'tipo_papel', $papel, "s",$codProd);
             }
             if(!empty($descripcion)){
-                updateProducto($mysqli, 'descripcion', $descripcion, "s",$cod_prod);
+                updateProducto($mysqli, 'descripcion', $descripcion, "s",$codProd);
             }
 
             if(!empty($img))
-                insertarImagen($mysqli, $cod_prod, $img['name'], $caption);
+                insertarImagen($mysqli, $codProd, $img['name'], $caption);
             // header("Location: index.php");
         }
             
     }
 
    
-
+    $producto = getProducto($mysqli, $codProd);
+    $imagenes = getImagenesProducto($mysqli, $codProd);
     $user = getUser($mysqli, 'username', $_SESSION['username']);
 
-    echo $twig->render('editProduct.html', ['errorMsgs' => $errormsgs, 'error' => $error, 'texto' => $comentario['texto'], 'id' => $cod_prod, 'user' => $user ])
+    echo $twig->render('editProduct.html', ['errorMsgs' => $errormsgs, 'error' => $error, 'texto' => $comentario['texto'], 'id' => $codProd, 'producto' => $producto, 'imagenes' => $imagenes, 'user' => $user ])
 ?>

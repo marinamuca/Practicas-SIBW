@@ -12,9 +12,20 @@ input{
     color: var(--dark-pink);
 }
 
+textarea{
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    resize: vertical;
+    color: grey;
+}
+
+textarea:focus{
+    outline-color: var(--main-pink);
+}
+
 input:focus{
     outline-color: var(--main-pink);
-    /* background-color: white; */
 }
 
 input[type=button], input[type=submit]{
@@ -56,5 +67,22 @@ span.error{
     display: block;
     font-size: small;
     color: rgb(219, 26, 26);
-    margin: 5px;
+    /* margin: 5px; */
+}
+
+.imagen{
+    color: var(--dark-pink);
+}
+
+.section-title{
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.form-field{
+    width: 100%;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
 }

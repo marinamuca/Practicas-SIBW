@@ -5,11 +5,13 @@ var badWords = [];
 
 function initialize() {
     comentarioTexto = document.getElementById("texto-comment");
-    comentarioTexto.addEventListener("keypress", detectarPalabras);
-    getBadWords();
+   
     document.getElementById("comment-btn").addEventListener("click", showComments);
     document.getElementById("tag-btn").addEventListener("click", showTags);
     document.getElementById("submit-btn").addEventListener("click", submitForm);
+
+    comentarioTexto.addEventListener("keypress", detectarPalabras);
+    getBadWords();
 };
 
 // Muestra el panel de comentarios

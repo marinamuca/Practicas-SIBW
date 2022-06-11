@@ -3,9 +3,11 @@
     <h2>{% block title_form %}{% endblock title_form %}</h2>
     <form name="{% block name_form %}{% endblock name_form %}" action="{% block action_form %}{% endblock action_form %}" method="post" enctype="multipart/form-data">
         <div class="form-field">
-            <input type="text" placeholder="Nombre del producto" name="nombre" class="{{ error.nombre }}">
+            <input type="text" placeholder="{% if id != -1 %} {{ producto.nombre }} {% else %} Nombre del producto {% endif %}" name="nombre" class="{{ error.nombre }}">
             <span class="error">{{ errorMsgs.nombre }}</span>
         </div>
+        {# Nueva imagen #}
+        <span class="section-title">Añadir nueva imagen</span>   
         <div class="form-field">
             <input type="file" name="img" class="{{ error.img }}">
             <span class="error">{{ errorMsgs.img }}</span>
@@ -14,20 +16,33 @@
             <input type="text" placeholder="Pie de foto" name="caption" class="{{ error.caption }}">
             <span class="error">{{ errorMsgs.caption }}</span>
         </div>
+        {# Editar imagenes #}
+        {% if id!=-1 %}
+            <span class="section-title">Borrar imagenes existentes</span>   
+            {% for imagen in imagenes %}
+                <div class="form-field">
+                    <span class="imagen">{{imagen.imagen}}</span>
+                    <a href="deleteImagen.php?img={{imagen.cod}}&prod={{id}}">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
         <div class="form-field">
-            <input type="text" placeholder="Precio" name="precio" class="{{ error.precio }}">
+            <input type="text" placeholder="{% if id != -1 %} {{ producto.precio }} {% else %} Precio {% endif %}" name="precio" class="{{ error.precio }}">
             <span class="error">{{ errorMsgs.precio }}</span>
         </div>
         <div class="form-field">
-            <input type="text" placeholder="Tamaño ilustración" name="tamano" class="{{ error.tamano }}">
+            <input type="text" placeholder="{% if id != -1 %} {{ producto.tamano }} {% else %} Tamaño ilustración {% endif %}" name="tamano" class="{{ error.tamano }}">
             <span class="error">{{ errorMsgs.tamano }}</span>
         </div>
         <div class="form-field">
-            <input type="text" placeholder="Tipo de papel" name="papel" class="{{ error.papel }}">
+            <input type="text" placeholder="{% if id != -1 %} {{ producto.papel }} {% else %} Tipo de papel {% endif %}" name="papel" class="{{ error.papel }}">
             <span class="error">{{ errorMsgs.papel }}</span>
         </div>
         <div class="form-field">
-            <input type="textaera" placeholder="Descripcion del producto" name="descripcion" class="{{ error.descripcion }}">
+            <textarea name="descripcion">{% if id != -1 %} {{ producto.descripcion }} {% else %} Descripcion del producto {% endif %}</textarea>
+            {# <input type="text" placeholder="{% if id != -1 %} {{ producto.descripcion }} {% else %} Descripcion del producto {% endif %}" name="descripcion" class="{{ error.descripcion }}"> #}
             <span class="error">{{ errorMsgs.descripcion }}</span>
         </div>
        

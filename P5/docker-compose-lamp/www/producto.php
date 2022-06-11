@@ -13,14 +13,14 @@
         $codProd = -1;
     }
 
-    $msqli = dbConnect();
-    $infoProduct = getProducto($msqli, $codProd);
-    $imagenes = getImagenesProducto($msqli, $codProd);
-    $comments = getCommentsFromProduct($msqli, $codProd);
-    $tags = getTagsFromProduct($msqli, $codProd);
+    $mysqli = dbConnect();
+    $infoProduct = getProducto($mysqli, $codProd);
+    $imagenes = getImagenesProducto($mysqli, $codProd);
+    $comments = getCommentsFromProduct($mysqli, $codProd);
+    $tags = getTagsFromProduct($mysqli, $codProd);
 
     if(isset($_SESSION['username']))
-        $user = getUser($msqli, 'username', $_SESSION['username']);
+        $user = getUser($mysqli, 'username', $_SESSION['username']);
 
     if(isset($_GET['print'])){
         echo $twig->render('producto_imprimir.html', ['producto' => $infoProduct, 'imagenes' => $imagenes, 'user' => $user]);
