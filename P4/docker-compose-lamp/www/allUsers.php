@@ -1,6 +1,5 @@
 <?php
     require_once "/usr/local/lib/php/vendor/autoload.php";
-    include("checkAuth.php");
     include("bd.php");
     session_start();
 
