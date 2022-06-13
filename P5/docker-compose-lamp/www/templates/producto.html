@@ -92,35 +92,11 @@
         {% endif %}
     </div>
 
-    <!-- Caja de Etiquetas -->
-    <div id="tags" class="panel-tag">
-        <ul class="tags-container"></ul>
-            {% for tag in tags %}
-            <li class="tag">
-                <span class="texto">{{ tag['tag'] }}</span>
-            </li>
-            {% endfor %}
-        </ul>
-        {% if user.rol == "GEST" or user.rol=="SU" %}
-            <span>Añade una etiqueta:</span>
-            <form id="tag-form" name="addTag" action="addTag.php?prod={{ producto['id'] }}" method="post">
-                <div class="form-field">
-                    <input type="text" placeholder="Etiqueta" id="texto-tag" name="tag">
-                    <span id="error-tag" class="error"></span>
-                </div>
-                <div class="form-field">
-                    <input type="submit" value="Enviar" id="submit-btn">
-                </div>
-            </form>
-        {% endif %}
-    </div>
-   
-
     <!-- Caja de comentarios -->
     <div id="comments" class="panel-comment">
         {% include "common/commentShow.html" %}
         {% if user %}
-            <span>Haz tu comentario:</span>
+            <span class="section-title">Haz tu comentario:</span>
             <form id="comment-form" name="comentar">
                 <div class="hidden" id="username">{{ user.username }}</div>
                 <div class="form-field">
@@ -132,10 +108,34 @@
                 </div>
             </form>
         {% else %}
-            <span>Registrate o inicia sesión para poder comentar.</span>
+            <span class="section-title">Registrate o inicia sesión para poder comentar.</span>
         {% endif %}
     </div>
     {% endblock comments %}
+
+    <!-- Caja de Etiquetas -->
+    <div id="tags" class="panel-tag">
+        <ul class="tags-container"></ul>
+            {% for tag in tags %}
+            <li class="tag">
+                <span class="texto">{{ tag['tag'] }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% if user.rol == "GEST" or user.rol=="SU" %}
+            <span class="section-title">Añade una etiqueta:</span>
+            <form id="tag-form" name="addTag" action="addTag.php?prod={{ producto['id'] }}" method="post">
+                <div class="form-field">
+                    <input type="text" placeholder="Etiqueta" id="texto-tag" name="tag">
+                    <span id="error-tag" class="error"></span>
+                </div>
+                <div class="form-field">
+                    <input type="submit" value="Enviar">
+                </div>
+            </form>
+        {% endif %}
+    </div>
+   
 
 
 {% endblock main_content %}

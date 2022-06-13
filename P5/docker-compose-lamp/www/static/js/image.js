@@ -5,14 +5,18 @@ var slideIndex = 1;
 showSlides(slideIndex);
 
 function initialize() {
-    document.getElementById("prev").addEventListener("click", previous);
-    document.getElementById("next").addEventListener("click", next);
+  var prev = document.getElementById("prev");
+  if(prev!=null)
+    prev.addEventListener("click", previousImage);
+  var next = document.getElementById("next")
+  if(next!=null)
+    next.addEventListener("click", nextImage);
 }
 
-function next(){
+function nextImage(){
     showSlides(slideIndex += 1);
 }
-function previous(){
+function previousImage(){
     showSlides(slideIndex -= 1);
 }
 

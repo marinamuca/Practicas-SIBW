@@ -19,9 +19,10 @@
         $tamano = $_POST['tamano'];
         $papel = $_POST['papel'];
         $descripcion = $_POST['descripcion'];
+        $publicado = $_POST['publicado'];
         $error = [];
 
-        $errormsgs = checkAddProduct($mysqli, $nombre, $img, $precio, $tamano, $papel, $descripcion, $caption);
+        $errormsgs = checkAddProduct($mysqli, $nombre, $img, $precio, $tamano, $papel, $descripcion, $caption, $publicado);
 
         if($errormsgs['nombre'] != ""){
             $error['nombre'] = "error";
@@ -46,9 +47,11 @@
         }
 
         if($error == []){
-            $id = insertarProducto($mysqli,  $nombre, $precio, $tamano, $papel, $descripcion);
-            if(!empty($img))
+            $id = insertarProducto($mysqli,  $nombre, $precio, $tamano, $papel, $descripcion, $publicado);
+            if($img['name'] != "")
                 insertarImagen($mysqli, $id, $img['name'], $caption);
+            else
+                insertarImagen($mysqli, $id, 'no-image.jpeg', "Sin imagen");
             header("Location: index.php");
         }
             
@@ -58,5 +61,5 @@
 
     $user = getUser($mysqli, 'username', $_SESSION['username']);
 
-    echo $twig->render('addProducto.html', ['errorMsgs' => $errormsgs, 'error' => $error, 'texto' => $comentario['texto'], 'id' => $cod_com, 'user' => $user ])
+    echo $twig->render('addProducto.html', ['errorMsgs' => $errormsgs, 'error' => $error, 'texto' => $comentario['texto'], 'id' => -1, 'user' => $user ])
 ?>

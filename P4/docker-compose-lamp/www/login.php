@@ -1,6 +1,6 @@
 <?php
     require_once "/usr/local/lib/php/vendor/autoload.php";
-    include("checkForm.php");
+    include("checkForms.php");
     include("bd.php");
 
     $mysqli = dbConnect();

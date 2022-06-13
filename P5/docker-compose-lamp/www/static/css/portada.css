@@ -15,6 +15,11 @@
     position: relative;
 }
 
+.no-publicado {
+    opacity: 0.5;
+    min-height: 20px;
+}
+
 .container-img:hover{
     border: 2px solid var(--light-pink);
     box-shadow: 0 8px 8px 0 var(--dark-shadow);
@@ -27,7 +32,7 @@
 }
 
 /* TEXT ON HOVER IMG */
-    div.overlay{
+    .overlay{
         position: absolute;
         top: 0;
         bottom: 0;
@@ -45,7 +50,7 @@
         opacity: 1;
     }
 
-    div.product-name {
+    .product-name {
         font-size: 30px;
         color: var(--light-pink);
         position: absolute;

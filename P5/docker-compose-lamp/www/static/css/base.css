@@ -3,12 +3,14 @@
 @import url("forms.css");
 @import url("table.css");
 @import url("comments.css");
+@import url("search.css");
 
 /* Estilos de los elementos comunes a todas las paginas */
 
 :root{
     --lighter-pink: #faebf3;
     --lighter-pink-shadow: #faebf38e;
+    --search-bar-shadow: #ffffffc7;
     --light-pink: #f6d7e7;
     --light-pink-shadow: #f6d7e7a2;
     --main-pink: #e7788b;

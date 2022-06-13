@@ -25,9 +25,10 @@
         $tamano = $_POST['tamano'];
         $papel = $_POST['papel'];
         $descripcion = $_POST['descripcion'];
+        $publicado = $_POST['publicado'];
         $error = [];
 
-        $errormsgs = checkEditProduct($mysqli, $nombre, $img, $precio, $tamano, $papel, $descripcion, $caption);
+        $errormsgs = checkEditProduct($mysqli, $codProd, $nombre, $img, $precio, $tamano, $papel, $descripcion, $caption, $publicado);
 
         if($errormsgs['nombre'] != ""){
             $error['nombre'] = "error";
@@ -53,7 +54,7 @@
 
         if($error == []){
             if(!empty($nombre)){
-                updateProducto($mysqli, 'nombre'  ,$nombre, "s",$codProd);
+                updateProducto($mysqli, 'nombre'  ,$nombre, "s", $codProd);
             }
             if(!empty($precio)){
                 updateProducto($mysqli, 'precio', $precio, "i",$codProd);
@@ -68,9 +69,15 @@
                 updateProducto($mysqli, 'descripcion', $descripcion, "s",$codProd);
             }
 
-            if(!empty($img))
+            if($publicado != null)
+                publicarProducto($mysqli, $codProd, 1);
+            else
+                publicarProducto($mysqli, $codProd, 0);
+
+            if($img['name'] != null)
                 insertarImagen($mysqli, $codProd, $img['name'], $caption);
-            // header("Location: index.php");
+
+            header("Location: producto.php?prod=$codProd");
         }
             
     }

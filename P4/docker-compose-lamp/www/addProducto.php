@@ -1,7 +1,7 @@
 <?php
     require_once "/usr/local/lib/php/vendor/autoload.php";
     include("bd.php");
-    include("checkForm.php");
+    include("checkForms.php");
     session_start();
 
 

@@ -5,9 +5,13 @@
             <span class="author">{{ row['username'] }}:</span>
             <div>
                 <span class="texto">{{ row['texto'] }}</span>
-                {% if row['editado'] %}   
-                    <span class="edit-msg">Mensaje editado por un moderador.</span>
-                {% endif %}
+   
+                <div class="edit-msg">
+                    {% if row['editado'] %}   
+                        <span>Mensaje editado por un moderador.</span>
+                    {% endif %}
+                </div>
+                
 
                 {% if user.rol == "MOD" or user.rol=="SU" %}
                     <div class="botones-moderador">

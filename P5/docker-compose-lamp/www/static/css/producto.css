@@ -123,6 +123,7 @@ figcaption {
     background-color: white;
     padding: 5px;
     color: var(--dark-pink);
+    margin: 5px 0;
 }
 
 .panel-tag{

@@ -48,13 +48,13 @@
     function getProducto($mysqli, $codProd){
         
         // Consulta a la tabla producto
-        $res = queryDB( $mysqli, 'COD_PROD, nombre, precio, descripcion, tamano, tipo_papel', 'producto','COD_PROD', $codProd, '' );
+        $res = queryDB( $mysqli, 'COD_PROD, nombre, precio, descripcion, tamano, tipo_papel, publicado', 'producto','COD_PROD', $codProd, '' );
      
-        $infoProduct = array('nombre' => 'Default name', 'precio' => '0', 'descripcion' => '', 'tamano' => '0x0 cm', 'papel' => '');
+        $infoProduct = array('nombre' => 'Default name', 'precio' => '0', 'descripcion' => '', 'tamano' => '0x0 cm', 'papel' => '', 'publicado' => '0');
         // Si la consulta devuelve algo:
         if($res->num_rows > 0){
             $row = $res-> fetch_assoc();
-            $infoProduct = array('id' => $row['COD_PROD'], 'nombre' => $row['nombre'], 'precio' => $row['precio'], 'descripcion' => $row['descripcion'], 'tamano' => $row['tamano'], 'papel' => $row['tipo_papel']);
+            $infoProduct = array('id' => $row['COD_PROD'], 'nombre' => $row['nombre'], 'precio' => $row['precio'], 'descripcion' => $row['descripcion'], 'tamano' => $row['tamano'], 'papel' => $row['tipo_papel'], 'publicado' => $row['publicado']);
         }
         return $infoProduct;
     }
@@ -78,14 +78,14 @@
     }
 
     function getAllProducts($mysqli){
-        $result = queryDB($mysqli, 'COD_PROD, nombre', 'producto', 1, 1, 'ORDER BY Producto.COD_PROD ASC' );
+        $result = queryDB($mysqli, 'COD_PROD, nombre, publicado', 'producto', 1, 1, 'ORDER BY Producto.publicado ASC, Producto.COD_PROD ASC' );
        
         $rows = resultToArray($result);
 
         foreach ($rows as $key => $row) {
            $res_img = queryDB($mysqli, 'ruta', 'imagen_producto', 'COD_PROD', $row['COD_PROD'], '' );
            $rows_img = resultToArray($res_img);
-           $productos[$key] = ['id' => $row['COD_PROD'], 'nombre' => $row['nombre'], 'imagen' => $rows_img[0]['ruta']];
+           $productos[$key] = ['id' => $row['COD_PROD'], 'nombre' => $row['nombre'], 'imagen' => $rows_img[0]['ruta'], 'publicado' => $row['publicado']];
         }
 
         return $productos;
@@ -359,5 +359,45 @@
         } 
 
         return $tags;
+    }
+
+    function publicarProducto($mysqli, $codProd, $valor){
+        $mysqli->query("UPDATE `Producto` SET `publicado` = $valor WHERE `Producto`.`COD_PROD` = $codProd;");
+    }
+
+    function searchProduct($mysqli, $input, $noPublicados){
+        $input = "%$input%";
+
+        if($noPublicados){
+            if(!$sentencia = $mysqli->prepare("SELECT COD_PROD, nombre FROM Producto WHERE (LOWER(`nombre`) LIKE LOWER(?)) OR (LOWER(`descripcion`) LIKE LOWER(?))")){
+                echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+            }
+        }   
+        else{
+            if(!$sentencia = $mysqli->prepare("SELECT COD_PROD, nombre FROM Producto WHERE publicado = 1 AND (LOWER(`nombre`) LIKE LOWER(?) OR LOWER(`descripcion`) LIKE LOWER(?))")){
+                echo "Falló la preparación. (" . $mysqli->errno . ") " . $mysqli->error;
+            }
+        }
+            
+        $sentencia->bind_param("ss", $input, $input);
+
+        if (!$sentencia->execute()) {
+            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
+        }
+        
+        $result = $sentencia->get_result();
+
+        $sentencia->close();
+
+        if($result->num_rows > 0){
+            
+            $rows = resultToArray($result);
+            foreach ($rows as $key => $row) {
+                $productos[$key] = ['id' => $row['COD_PROD'], 'nombre' => $row['nombre']];
+            }
+        } 
+
+        return $productos;
+
     }
 ?>

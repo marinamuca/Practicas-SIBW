@@ -135,9 +135,10 @@
         return $error;
     }
 
-    function checkAddProduct($mysqli, $nombre, $img, $precio, $tamano, $papel, $descripcion, $caption){
+    function checkAddProduct($mysqli, $nombre, $img, $precio, $tamano, $papel, $descripcion, $caption, $publicado){
         $errormsgs = ['nombre' => "", 'img' => "", 'caption' => "",'precio' => "", 'tamano' => "", 'papel' => "", 'descripción' => ""];
 
+      if ($publicado) {
         if(empty($nombre)){
             $errormsgs['nombre'] = "El nombre no puede estar vacío";
         }
@@ -162,31 +163,34 @@
             if( $id != -1 )
                 $errormsgs['nombre'] = "El nombre de producto ya existe";
         }
+      }
         
         return $errormsgs; 
     }
 
-    function checkEditProduct($mysqli, $nombre, $img, $precio, $tamano, $papel, $descripcion, $caption){
+    function checkEditProduct($mysqli, $codProd, $nombre, $img, $precio, $tamano, $papel, $descripcion, $caption, $publicado){
         $errormsgs = ['nombre' => "", 'img' => "", 'caption' => "",'precio' => "", 'tamano' => "", 'papel' => "", 'descripción' => ""];
-    
-        if($img['size'] > 0){
-            $errormsgs['img'] = checkImagen($img);
-            if($errormsgs['img'] == ""){
-                if(empty($caption))
-                    $errormsgs['caption'] = "Debe añadir un pie de foto.";
-                else {
-                    $nombre_img = $img['name'];
-                    move_uploaded_file( $tmp_img = $img['tmp_name'], "static/image/" . $nombre_img );
+
+        if ($publicado) {
+            if($img['size'] > 0){
+                $errormsgs['img'] = checkImagen($img);
+                if($errormsgs['img'] == ""){
+                    if(empty($caption))
+                        $errormsgs['caption'] = "Debe añadir un pie de foto.";
+                    else {
+                        $nombre_img = $img['name'];
+                        move_uploaded_file( $tmp_img = $img['tmp_name'], "static/image/" . $nombre_img );
+                    }
                 }
             }
+            
+            if(!empty($nombre)){
+                $id = getIDProductByName($mysqli, $nombre);
+                if( $id != -1 && $id != $codProd )
+                    $errormsgs['nombre'] = "El nombre de producto ya existe";
+            }
         }
-        
-        if(!empty($nombre)){
-            $id = getIDProductByName($mysqli, $nombre);
-            if( $id != -1 )
-                $errormsgs['nombre'] = "El nombre de producto ya existe";
-        }
-        
+            
         return $errormsgs; 
     }
 

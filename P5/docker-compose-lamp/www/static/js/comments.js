@@ -7,8 +7,8 @@ function initialize() {
     comentarioTexto = document.getElementById("texto-comment");
    
     document.getElementById("comment-btn").addEventListener("click", showComments);
-    document.getElementById("tag-btn").addEventListener("click", showTags);
     document.getElementById("submit-btn").addEventListener("click", submitForm);
+    document.getElementById("tag-btn").addEventListener("click", showTags);
 
     comentarioTexto.addEventListener("keypress", detectarPalabras);
     getBadWords();
@@ -192,16 +192,27 @@ function sendComment(texto, fecha){
     var newComment = [texto, fecha];
 
     var comment = JSON.stringify(newComment);
+    console.log(comment);
 
     var ajax = new XMLHttpRequest();
 
+    ajax.onreadystatechange = function () {
+        console.log(this.readyState);
+        console.log(this.responseText);
+        
+    }
 
    var producto = document.URL.split("?")[1];
    var url = "addComment.php?" + producto;
 
+   console.log(url);
+
+
     ajax.open("POST", url, true);
     ajax.setRequestHeader("Content-type", "application/json")
     ajax.send(comment);
+
+
 }
 
 
